@@ -1,10 +1,11 @@
 <script>
     export let button_label = ''
     export let typeOfButton = ''
+    export let type = ''
 
 </script>
 <main>
-    <button class={typeOfButton}>{button_label}</button>
+    <button class={typeOfButton} type={type}>{button_label}</button>
 </main>
 <style>
     .save{

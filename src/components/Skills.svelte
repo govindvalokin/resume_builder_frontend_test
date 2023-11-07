@@ -4,7 +4,7 @@
     export let skill_options = ['Low', 'Medium', 'High']
 </script>
 <div class="contentBox">
-    <h3 class="subTitle">Education</h3>
+    <h3 class="subTitle">Skills</h3>
     <InputBlock type="text" placeholder = "Add Skill Name" id = "skill-name" label = "Skill Name"/>
     <SkillLevelSelectComponent label="Level" options={skill_options}/>
     	

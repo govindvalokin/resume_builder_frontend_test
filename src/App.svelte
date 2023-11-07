@@ -4,11 +4,11 @@
 
 </script>
 
-<main>
+
 
 	<CreateForm/>
 	
-</main>
+
 
 <style>
 	

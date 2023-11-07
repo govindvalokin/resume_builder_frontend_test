@@ -9,24 +9,44 @@
     import ProjectDetails from "./projectDetails.svelte";
     export let backward_link = '< Back to all Resume List'
 
+    export let form_data = {};
+    export let name = '';
+    export let email = '';
+    export let phone = '';
+    export let image_url = '';
+    export let pincode = '';
+    
+    function handleSubmit(){
+        form_data = {
+            basic_data:{
+                name,
+                email,
+                phone,
+                image_url,
+                pincode,
+            }
+        };
+        console.log(JSON.stringify(form_data)); 
+    }
+    
 </script>
 <main>
     <div class="formHeading">
         <a href="">{backward_link}</a>
         <h2>Add Resume Content</h2>
     </div>
-    <form>
+    <form on:submit|preventDefault={handleSubmit}>
 
-        <BasicDetails/>
-        <Address2/>
-        <Education/>
-        <SocialMedia/>
-        <Work/>
-        <Skills/>
-        <ProjectDetails/>
+        <BasicDetails bind:name bind:email bind:phone bind:image_url bind:pincode/>
+        <!-- <Address2/> -->
+        <!-- <Education/> -->
+        <!-- <SocialMedia/> -->
+        <!-- <Work/> -->
+        <!-- <Skills/> -->
+        <!-- <ProjectDetails/> -->
         <div class="submissionButtons">
             <Button typeOfButton="cancel" button_label="cancel"/>
-            <Button typeOfButton="save" button_label="save"/>
+            <Button typeOfButton="save" button_label="save" type="submit"/>
         </div>
     </form>
 </main>
