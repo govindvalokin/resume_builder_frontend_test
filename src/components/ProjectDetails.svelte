@@ -1,18 +1,17 @@
 <script>
     import InputBlock from "../BasicComponents/TextInputBlock.svelte";
-    import SkillLevelSelectComponent from "../BasicComponents/SelectInputBlock.svelte";
-    export let skill_options = ['Low', 'Medium', 'High']
 
     export let open = false;
     import { slide } from 'svelte/transition';
 	const handleClick = () => open = !open;
 </script>
 <div class="contentBox">
-    <h3 class="subTitle" on:click={handleClick}>Skills</h3>
+    <h3 class="subTitle" on:click={handleClick}>Project Details</h3>
     {#if open}
     <div class="Active" transition:slide>
-        <InputBlock type="text" placeholder = "Add Skill Name" id = "skill-name" label = "Skill Name"/>
-        <SkillLevelSelectComponent label="Level" options={skill_options}/>
+        <InputBlock type="text" placeholder = "Add Project Title" id = "project-title" label = "Project Title"/>
+        <InputBlock type="text" placeholder = "Add Skills" id = "skills" label = "Skills"/>
+        <InputBlock type="text" placeholder = "Add Description" id = "description" label = "Descriptoion"/>
     </div>
     {/if}	
 </div>

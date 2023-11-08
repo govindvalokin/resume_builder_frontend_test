@@ -1,7 +1,8 @@
 <script>
+    // export let type = "";
     export let id = "";
+    export let placeholder = "";
     export let label = "";
-    export let options = [];
     export let value;
 </script>
 
@@ -12,11 +13,8 @@
                 <label for={id}>{label}</label>
             </div>
             <div class="inputEntry">
-                <select bind:value> 
-                    {#each options as option}
-                        <option value={option}>{option}</option>
-                    {/each}
-                </select>
+                <input {id} type="date" {placeholder} bind:value />
+                <!-- <input {id} type="text" {placeholder} /> -->
             </div>
         </div>
     </div>
@@ -41,7 +39,21 @@
         width: 80%;
         height: 43px;
     }
-    select {
+    /* input[type="text"] {
+        width: 100%;
+        height: 38px;
+        padding-left: 5px;
+        border-radius: 0px;
+        margin: 0px;
+    }
+    input[type="email"] {
+        width: 100%;
+        height: 38px;
+        padding-left: 5px;
+        border-radius: 0px;
+        margin: 0px;
+    } */
+    input[type="date"] {
         width: 100%;
         height: 38px;
         padding-left: 5px;

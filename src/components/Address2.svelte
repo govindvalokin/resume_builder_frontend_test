@@ -1,10 +1,16 @@
 <script>
-    import InputBlock from "./InputBlock.svelte";
-    import SelectComponent from "./SelectComponent.svelte";
+    import InputBlock from "../BasicComponents/TextInputBlock.svelte";
+    import SelectComponent from "../BasicComponents/SelectInputBlock.svelte";
     export let country_options = ['India','Caneda','United Kingdom','United States','Australia','China','Qatar'] 
     export let open = false;
     import { slide } from 'svelte/transition';
 	const handleClick = () => open = !open
+
+    export let address = '';
+    export let street = '';
+    export let city = '';
+    export let pincode = '';
+    export let country = '';
 </script>
 
 <main>
@@ -13,11 +19,11 @@
         {#if open}
         <div class="Active" transition:slide>
 		    
-		    <InputBlock type="text" placeholder = "Add Address Line" id = "address" label = "Address"/>
-		    <InputBlock type="text" placeholder = "Add Street Name" id = "street" label = "Street"/>
-		    <InputBlock type="text" placeholder = "Add City Name" id = "city" label = "City"/>
-            <SelectComponent label="Country" options={country_options}/>
-		    <InputBlock type="text" placeholder = "Add Pincode" id = "pincode" label = "Pincode"/>	
+		    <InputBlock placeholder = "Add Address Line" id = "address" label = "Address" bind:value="{address}"/>
+		    <InputBlock placeholder = "Add Street Name" id = "street" label = "Street" bind:value="{street}" />
+		    <InputBlock placeholder = "Add City Name" id = "city" label = "City" bind:value="{city}" />
+            <SelectComponent label="Country" options={country_options} bind:value="{country}"/>
+		    <InputBlock placeholder = "Add Pincode" id = "pincode" label = "Pincode" bind:value="{pincode}" />	
 	    </div>
         {/if}
     </div>

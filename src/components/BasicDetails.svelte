@@ -1,5 +1,7 @@
 <script>
-    import InputBlock from "./InputBlock.svelte";
+    import InputBlock from "../BasicComponents/TextInputBlock.svelte";
+    import EmailBlock from "../BasicComponents/EmailInputBlock.svelte";
+    import UrlBlock from "../BasicComponents/UrlInputBlock.svelte";
     export let open = false;
     import { slide } from "svelte/transition";
     const handleClick = () => (open = !open);
@@ -8,7 +10,7 @@
     export let email = '';
     export let phone = '';
     export let image_url = '';
-    export let pincode = '';
+    export let summary = '';
     
 </script>
 
@@ -24,7 +26,7 @@
                    
                     bind:value = "{name}"
                 />
-                <InputBlock placeholder="Add Email" id="email" label="Email"  bind:value = "{email}"/>
+                <EmailBlock placeholder="Add Email" id="email" label="Email"  bind:value = "{email}"/>
                 <InputBlock
                     placeholder="Add Phone Number"
                     id="phone"
@@ -32,7 +34,7 @@
                     
                     bind:value = "{phone}"
                 />
-                <InputBlock
+                <UrlBlock
                     placeholder="Add Image URL"
                     id="image-url"
                     label="Image URL"
@@ -41,10 +43,10 @@
                 />
                 <InputBlock
                     placeholder="Add Summary"
-                    id="pincode"
-                    label="Pincode"
+                    id="summary"
+                    label="summary"
                     
-                    bind:value = "{pincode}"
+                    bind:value = "{summary}"
                 />
             </div>
         {/if}
