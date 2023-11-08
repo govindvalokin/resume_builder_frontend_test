@@ -28,6 +28,24 @@
     export let location ='';
     export let academic_year_start='';
     export let accademic_year_end='';
+
+    export let network = '';
+    export let url = '';
+    export let user_name = '';
+
+    export let organisation = '';
+    export let job_role = '';
+    export let job_location = '';
+    export let key_roles = '';
+    export let start_date = '';
+    export let end_date = '';
+
+    export let skill_name = '';
+    export let level = '';
+
+    export let project_title = '';
+    export let skills_earned = '';
+    export let description = '';
     
     function handleSubmit(){
         form_data = {
@@ -52,6 +70,28 @@
                 location,
                 academic_year_start,
                 accademic_year_end
+            },
+            social_media_data:{
+                network,
+                url,
+                user_name
+            },
+            work_data:{
+                organisation,
+                job_role,
+                job_location,
+                key_roles,
+                start_date,
+                end_date
+            },
+            skill_data:{
+                skill_name,
+                level
+            },
+            project_data:{
+                project_title,
+                skills_earned,
+                description
             }
         };
         console.log(JSON.stringify(form_data)); 
@@ -68,10 +108,10 @@
         <BasicDetails bind:name bind:email bind:phone bind:image_url bind:summary/>
         <Address2 bind:address bind:street bind:city bind:pincode bind:country/>
         <Education bind:qualification bind:course_name bind:institute_name bind:location bind:academic_year_start bind:accademic_year_end/>
-        <!-- <SocialMedia/> -->
-        <!-- <Work/> -->
-        <!-- <Skills/> -->
-        <!-- <ProjectDetails/> -->
+        <SocialMedia bind:network bind:url bind:user_name />
+        <Work bind:organisation bind:job_role bind:job_location bind:key_roles bind:start_date bind:end_date />
+        <Skills bind:skill_name bind:level />
+        <ProjectDetails  bind:project_title bind:skills_earned bind:description />
         <div class="submissionButtons">
             <Button typeOfButton="cancel" button_label="cancel"/>
             <Button typeOfButton="save" button_label="save" type="submit"/>

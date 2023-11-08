@@ -1,10 +1,14 @@
 <script>
-    import InputBlock from "./InputBlock.svelte";
+    import InputBlock from "../BasicComponents/TextInputBlock.svelte";
     import UrlBlock from "../BasicComponents/UrlInputBlock.svelte";
 
     export let open = false;
     import { slide } from 'svelte/transition';
 	const handleClick = () => open = !open;
+
+    export let network = '';
+    export let url = '';
+    export let user_name = '';
     
 </script>
 <div class="contentBox">
@@ -12,9 +16,9 @@
     {#if open}
     <div class="Active" transition:slide>
 
-        <InputBlock placeholder = "Add Network" id = "network" label = "Network" />
-        <UrlBlock placeholder = "Add URL" id = "network-url" label = "URL" />
-        <InputBlock placeholder = "Add User Name" id = "user-name" label = "User Name" />
+        <InputBlock placeholder = "Add Network" id = "network" label = "Network" bind:value="{network}" />
+        <UrlBlock placeholder = "Add URL" id = "network-url" label = "URL" bind:value="{url}" />
+        <InputBlock placeholder = "Add User Name" id = "user-name" label = "User Name" bind:value="{user_name}" />
     </div>
     {/if}	
 </div>
