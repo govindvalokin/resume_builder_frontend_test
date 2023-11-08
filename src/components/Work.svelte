@@ -6,57 +6,73 @@
     import { slide } from "svelte/transition";
     const handleClick = () => (open = !open);
 
-    export let organisation = '';
-    export let job_role = '';
-    export let job_location = '';
-    export let key_roles = '';
-    export let start_date = '';
-    export let end_date = '';
-
+    export let work = [{ organisation: '', job_role: '', job_location: '', key_roles: '', start_date:'', end_date:'' }]
+    // export let organisation = '';
+    // export let job_role = '';
+    // export let job_location = '';
+    // export let key_roles = '';
+    // export let start_date = '';
+    // export let end_date = '';
+    function addWork(){
+        work = [...work, { organisation: '', job_role: '', job_location: '', key_roles: '', start_date:'', end_date:'' }]
+    }
+    function removeWork(index) {
+      if (work.length > 1) {
+        work = work.filter((_, i) => i !== index);
+      }
+    }
 
 </script>
 
 <div class="contentBox">
     <h3 class="subTitle" on:click={handleClick}>Work</h3>
     {#if open}
+    {#each work as work_data, i}
         <div class="Active" transition:slide>
             <InputBlock
                 placeholder="Add Organisation"
                 id="organisation"
                 label="Organisation"
-                bind:value="{organisation}"
+                bind:value="{work_data.organisation}"
             />
             <InputBlock
                 placeholder="Add Job Role"
                 id="job-role"
                 label="Job Role"
-                bind:value="{job_role}"
+                bind:value="{work_data.job_role}"
             />
             <InputBlock
                 placeholder="Add Job Location"
                 id="job-location"
                 label="Job Location"
-                bind:value="{job_location}"
+                bind:value="{work_data.job_location}"
             />
             <InputBlock
                 placeholder="Add Key Roles "
                 id="key-roles"
                 label="Key Roles"
-                bind:value="{key_roles}"
+                bind:value="{work_data.key_roles}"
             />
             <DateBlock
                 placeholder="Add Start Date"
                 id="start-date"
                 label="Start Date"
-                bind:value="{start_date}"
+                bind:value="{work_data.start_date}"
             />
             <DateBlock
                 placeholder="Add End Date"
                 id="end-date"
                 label="End Date"
-                bind:value="{end_date}"
+                bind:value="{work_data.end_date}"
             />
         </div>
+        <div class="WorkButtons">
+            <button on:click|preventDefault={addWork}>Add New Work</button>
+            {#if i !== 0}
+                <button on:click|preventDefault={() => removeWork(i)}>Remove Work</button>
+            {/if}
+        </div>
+    {/each}
     {/if}
 </div>
 
@@ -72,5 +88,20 @@
         content: "+";
         position: absolute;
         right: 25px;
+    }
+    .WorkButtons{
+        margin-top: 10px;
+   }
+   .WorkButtons button{
+        width: 123px;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+   }
+   .contentBox{
+        border: 1px solid white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset;
     }
 </style>

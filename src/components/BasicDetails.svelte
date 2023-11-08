@@ -62,8 +62,15 @@
     }
 
     .subTitle::before {
-        content: "+";
+        content: "^";
         position: absolute;
         right: 25px;
     }
+    .contentBox{
+        border: 1px solid white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset;
+    }
+
 </style>

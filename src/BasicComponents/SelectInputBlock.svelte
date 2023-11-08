@@ -3,6 +3,7 @@
     export let label = "";
     export let options = [];
     export let value;
+    export let default_value='';
 </script>
 
 <main>
@@ -12,7 +13,8 @@
                 <label for={id}>{label}</label>
             </div>
             <div class="inputEntry">
-                <select bind:value> 
+                <select bind:value>
+                    <option value="">{default_value}</option> 
                     {#each options as option}
                         <option value={option}>{option}</option>
                     {/each}
@@ -23,6 +25,9 @@
 </main>
 
 <style>
+    select option:first-child{
+        display: none;
+    }
     .inputField {
         display: flex;
         border: solid 0.1px gray;
@@ -43,9 +48,10 @@
     }
     select {
         width: 100%;
-        height: 38px;
+        height: 43px;
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
+        background-color: white;
     }
 </style>

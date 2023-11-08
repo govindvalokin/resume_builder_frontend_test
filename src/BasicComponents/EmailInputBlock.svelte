@@ -48,7 +48,7 @@
     } */
     input[type="email"] {
         width: 100%;
-        height: 38px;
+        height: 43px;
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
