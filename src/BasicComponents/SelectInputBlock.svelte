@@ -27,6 +27,7 @@
 <style>
     select option:first-child{
         display: none;
+        
     }
     .inputField {
         display: flex;
@@ -54,4 +55,5 @@
         margin: 0px;
         background-color: white;
     }
+    
 </style>
