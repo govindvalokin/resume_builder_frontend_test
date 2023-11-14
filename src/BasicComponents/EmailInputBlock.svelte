@@ -47,11 +47,30 @@
         margin: 0px;
     } */
     input[type="email"] {
-        width: 100%;
-        height: 43px;
+        width: 50%;
+        height: 38px;
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
+
+        border-top-color: white;
+        border-left-color: white;
+        border-right-color: white;
+        margin-left: 7px;
+        border-bottom-color:white ;
+        /* outline: white; */
+        /* border-bottom: 2px solid black; */
+        outline: none;
+    }
+    input[type="email"]:active {
+        border-bottom: 2px solid black;
+        border-top-color: white;
+        border-left-color: white;
+        border-right-color: white;
+        /* outline: white; */
+        outline: none;
+        
+        
     }
     /* input[type="date"] {
         width: 100%;

@@ -48,12 +48,14 @@
         height: 43px;
     }
     select {
-        width: 100%;
+        width: 50%;
         height: 43px;
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
         background-color: white;
+        margin-left: 7px;
+        border: none;
     }
     
 </style>

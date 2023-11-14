@@ -40,11 +40,18 @@
         height: 43px;
     }
     input[type="url"] {
-        width: 100%;
-        height: 43px;
+        width: 50%;
+        height: 38px;
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
+
+        border-top-color: white;
+        border-left-color: white;
+        border-right-color: white;
+        margin-left: 7px;
+        border-bottom: 2px solid black;
+        /* border-color: white; */
     }
     /* input[type="email"] {
         width: 100%;

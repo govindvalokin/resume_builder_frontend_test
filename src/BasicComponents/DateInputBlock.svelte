@@ -54,7 +54,7 @@
         margin: 0px;
     } */
     input[type="date"] {
-        width: 100%;
+        width: 50%;
         height: 43px;
         padding-left: 5px;
         border-radius: 0px;

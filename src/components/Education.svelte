@@ -1,9 +1,11 @@
 <script>
     import InputBlock from "../BasicComponents/TextInputBlock.svelte";
     import DateBlock from "../BasicComponents/DateInputBlock.svelte";
+    import Icon from '@iconify/svelte';
 
     export let open = false;
     import { slide } from 'svelte/transition';
+    import { validateCourseName, validateInstitute, validateLocation, validateQualification } from "./validation";
 	const handleClick = () => open = !open;
 
     export let education = [{ qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', accademic_year_end:''}]
@@ -24,14 +26,27 @@
     }
 </script>
 <div class="contentBox">
-    <h3 class="subTitle" on:click={handleClick}>Education</h3>
+    <div class="AccordionHeading">
+        <h3 class="subTitle" on:click={handleClick}>Education</h3>
+        <div class="UpwordArrow">
+            {#if open}
+                <Icon icon="ic:baseline-keyboard-arrow-up" width = "24" height= "24" color="black"/>
+            {:else}
+            <Icon icon="material-symbols:keyboard-arrow-down" width = "24" height= "24" color="black"/>
+            {/if}
+        </div>
+    </div>
     {#if open}
     {#each education as education_data, i}
     <div class="Active" transition:slide>
         <InputBlock placeholder = "Add Qualification" id = "qualification" label = "Qualification" bind:value={education_data.qualification}/>
+        <div class="errors">{education_data.qualification && validateQualification(education_data.qualification)}</div>
         <InputBlock placeholder = "Add Course Name" id = "course-name" label = "Course Name" bind:value={education_data.course_name} />
+        <div class="errors">{education_data.course_name && validateCourseName(education_data.course_name)}</div>
         <InputBlock placeholder = "Add Institute" id = "institute" label = "Institute" bind:value={education_data.institute_name} />
+        <div class="errors">{education_data.institute_name && validateInstitute(education_data.institute_name)}</div>
         <InputBlock placeholder = "Add Location" id = "location" label = "Location" bind:value={education_data.location} />
+        <div class="errors">{education_data.location && validateLocation(education_data.location)}</div>
         <DateBlock placeholder = "Add Accademic Year Start" id = "accademic_year_start" label = "Accademic Year Start" bind:value={education_data.academic_year_start} />
         <DateBlock placeholder = "Add Accademic Year End" id = "accademic_year_end" label = "Accademic Year End" bind:value={education_data.accademic_year_end} />	
     </div>
@@ -46,18 +61,18 @@
 </div>
 <style>
     h3{
-       width: 100%;
+       width: 95%;
    }
    h3:hover{
     cursor: pointer;
    }
   
-   .subTitle::before{
+   /* .subTitle::before{
        content: '+';
        position: absolute;
        right: 25px;
        
-   }
+   } */
    .EducationButtons{
         margin-top: 10px;
    }
@@ -72,5 +87,18 @@
         margin-top: 10px;
         margin-bottom: 10px;
         box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset;
+    }
+    .AccordionHeading{
+        display: flex;
+
+    }
+    .UpwordArrow{
+        width: 5%;
+        padding-top: 18px;
+    }
+    .errors{
+        color: red;
+        padding-left: 240px;
+        width: 100%
     }
 </style>

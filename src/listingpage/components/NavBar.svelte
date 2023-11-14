@@ -15,7 +15,7 @@
             </div>     
         </div>
         <div class="AddNew">
-            <a href="">{add_new}</a>
+            <a href="#/CreateForm">{add_new}</a>
         </div>
     </div>
 </main>

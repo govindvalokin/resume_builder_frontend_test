@@ -1,9 +1,14 @@
 <script>
-    // export let type = "";
+    
     export let id = "";
     export let placeholder = "";
     export let label = "";
     export let value;
+   
+
+    // export let error;
+    // export let changeHandler;
+   
 </script>
 
 <main>
@@ -14,7 +19,8 @@
             </div>
             <div class="inputEntry">
                 <input {id} type="text" {placeholder} bind:value />
-                <!-- <input {id} type="text" {placeholder} /> -->
+                <!-- <input {id} type="text" {placeholder} bind:value on:change={changeHandler}/> -->
+                <!-- <span>{error}</span> -->
             </div>
         </div>
     </div>
@@ -40,11 +46,17 @@
         height: 43px;
     }
     input[type="text"] {
-        width: 100%;
-        height: 43px;
+        width: 50%;
+        height: 38px;
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
+
+        border-top-color: white;
+        border-left-color: white;
+        border-right-color: white;
+        margin-left: 7px;
+        border-bottom: 2px solid black;
     }
     /* input[type="email"] {
         width: 100%;

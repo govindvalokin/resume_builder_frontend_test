@@ -1,6 +1,7 @@
 <script>
     import InputBlock from "../BasicComponents/TextInputBlock.svelte";
     import UrlBlock from "../BasicComponents/UrlInputBlock.svelte";
+    import Icon from '@iconify/svelte';
 
     export let open = false;
     import { slide } from "svelte/transition";
@@ -25,7 +26,16 @@
 </script>
 
 <div class="contentBox">
-    <h3 class="subTitle" on:click={handleClick}>Social Media</h3>
+    <div class="AccordionHeading">
+        <h3 class="subTitle" on:click={handleClick}>Social Media</h3>
+        <div class="UpwordArrow">
+            {#if open}
+                <Icon icon="ic:baseline-keyboard-arrow-up" width = "24" height= "24" color="black"/>
+            {:else}
+            <Icon icon="material-symbols:keyboard-arrow-down" width = "24" height= "24" color="black"/>
+            {/if}
+        </div>
+    </div>
     {#if open}
         {#each social_media as social_media_data, i}
             <div class="Active" transition:slide>
@@ -64,17 +74,17 @@
 
 <style>
     h3 {
-        width: 100%;
+        width: 95%;
     }
     h3:hover {
         cursor: pointer;
     }
 
-    .subTitle::before {
+    /* .subTitle::before {
         content: "+";
         position: absolute;
         right: 25px;
-    }
+    } */
     .SocialMediaButtons{
         margin-top: 10px;
    }
@@ -89,5 +99,13 @@
         margin-top: 10px;
         margin-bottom: 10px;
         box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset;
+    }
+    .AccordionHeading{
+        display: flex;
+
+    }
+    .UpwordArrow{
+        width: 5%;
+        padding-top: 18px;
     }
 </style>

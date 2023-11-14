@@ -35,6 +35,10 @@ function toggleMenu() {
                     <div class="dropdown-content">
                         <a href="#">Edit</a>
                         <a href="#">Delete</a>
+
+                        <!-- <button id="edit_button">Edit</button>
+                        <button id="delete_button">Delete</button> -->
+
                     </div>
                 {/if}
             </td>
@@ -93,5 +97,25 @@ ul{
 .dropdown-content a{
     margin-bottom: 7px;
 }
+
+
+/* #edit_button{
+    width: 61px;
+    height: 24px;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+#delete_button{
+    width: 61px;
+    height: 24px;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+} */
 
 </style>
