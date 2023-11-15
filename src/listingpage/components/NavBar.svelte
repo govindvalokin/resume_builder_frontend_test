@@ -7,14 +7,14 @@
 </script>
 <main>
     <h1>Resumes</h1><hr>
-    <div class="NavContent">
-        <div class="SearchBar">
+    <div class="nav-content">
+        <div class="search-bar">
             <input type="search" placeholder="Search by Email" >
-            <div class="SearchIconClass">
-                <Icon icon={searchIcon}/>
+            <div class="search-icon-class">
+                <Icon icon={searchIcon} width = "20px"/>
             </div>     
         </div>
-        <div class="AddNew">
+        <div class="add-new">
             <a href="#/CreateForm">{add_new}</a>
         </div>
     </div>
@@ -24,18 +24,18 @@
         width: 300px;
     }
     
-    .SearchIconClass{
+    .search-icon-class{
         
         width: 24px;
         height: 27px;
-
-        padding-top: 8px;
+        padding-left: 3px;
+        padding-top: 6px;
         
     }
-    .SearchBar{
+    .search-bar{
         display: flex;
     }
-    .NavContent{
+    .nav-content{
         display: flex;
         justify-content: space-between;
         background-color: #e7ebef;
@@ -46,7 +46,7 @@
         padding-right: 6px;
         
     }
-    .AddNew{
+    .add-new{
         padding-top: 6px;
     }
     h1{
@@ -54,6 +54,7 @@
         margin-top: 5px;
         font-weight: normal;
         padding-left: 2px;
+        font-family: ui-sans-serif;
     }
     main{
         background-color: #e7ebef;

@@ -25,10 +25,10 @@
       }
     }
 </script>
-<div class="contentBox">
-    <div class="AccordionHeading">
-        <h3 class="subTitle" on:click={handleClick}>Education</h3>
-        <div class="UpwordArrow">
+<div class="content-box">
+    <div class="accordion-heading">
+        <h3 class="sub-title" on:click={handleClick}>Education</h3>
+        <div class="upword-arrow">
             {#if open}
                 <Icon icon="ic:baseline-keyboard-arrow-up" width = "24" height= "24" color="black"/>
             {:else}
@@ -38,7 +38,7 @@
     </div>
     {#if open}
     {#each education as education_data, i}
-    <div class="Active" transition:slide>
+    <div class="active" transition:slide>
         <InputBlock placeholder = "Add Qualification" id = "qualification" label = "Qualification" bind:value={education_data.qualification}/>
         <div class="errors">{education_data.qualification && validateQualification(education_data.qualification)}</div>
         <InputBlock placeholder = "Add Course Name" id = "course-name" label = "Course Name" bind:value={education_data.course_name} />
@@ -50,7 +50,7 @@
         <DateBlock placeholder = "Add Academic Year Start" id = "academic_year_start" label = "Academic Year Start" bind:value={education_data.academic_year_start} />
         <DateBlock placeholder = "Add Academic Year End" id = "academic_year_end" label = "Academic Year End" bind:value={education_data.academic_year_end} />	
     </div>
-    <div class="EducationButtons">
+    <div class="education-buttons">
         <button on:click|preventDefault={addEducation}>Add New Qualification</button>
         {#if i !== 0}
             <button on:click|preventDefault={() => removeEducation(i)}>Remove Qualification</button>
@@ -62,6 +62,8 @@
 <style>
     h3{
        width: 95%;
+       padding-left: 10px;
+       font-family: initial
    }
    h3:hover{
     cursor: pointer;
@@ -73,33 +75,36 @@
        right: 25px;
        
    } */
-   .EducationButtons{
+   .education-buttons{
         margin-top: 10px;
    }
-   .EducationButtons button{
+   .education-buttons button{
         width: 178px;
         background-color: white;
-        color: black;
+        color: blue;
         border-radius: 5px;
+        border-color: white;
+        cursor: pointer;
    }
-   .contentBox{
+   .content-box{
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
         /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
-    .AccordionHeading{
+    .accordion-heading{
         display: flex;
 
     }
-    .UpwordArrow{
+    .upword-arrow{
         width: 5%;
         padding-top: 18px;
     }
     .errors{
         color: red;
-        padding-left: 240px;
+        /* padding-left: 240px; */
+        text-align: start;
         width: 100%
     }
 </style>

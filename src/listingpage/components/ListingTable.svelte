@@ -28,12 +28,12 @@ function toggleMenu() {
             <th id="icon_heading"></th>
         </tr>
         <tr>
-            <td>adsa</td>
-            <td>das</td>
-            <td>da</td>
-            <td>asda</td>
+            <td>1</td>
+            <td>Govind V E</td>
+            <td>govind@gmail.com</td>
+            <td>9188040875</td>
             <td id="icon_column">
-                <div class="IconContainer" on:click={toggleMenu}>
+                <div class="icon-container" on:click={toggleMenu}>
                     <Icon icon={dotsY}/>
                 </div>
                 {#if show_menu}
@@ -69,15 +69,17 @@ table tr:first-child{
 td{
     text-align: left;
     height: 30px;
+    font-family: ui-rounded;
 }
 th{
     text-align: left;
+    font-family: ui-rounded;
 }
 ul{
     width: 30px;
     height: auto;
 }
-.IconContainer{
+.icon-container{
     /* background-color: green; */
     height: auto;
     position: relative;

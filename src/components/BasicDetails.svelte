@@ -23,10 +23,10 @@
 </script>
 
 <main>
-    <div class="contentBox">
-        <div class="AccordionHeading">
-            <h3 class="subTitle" on:click={handleClick}>Basic Details</h3>
-            <div class="UpwordArrow">
+    <div class="content-box">
+        <div class="accordion-heading">
+            <h3 class="sub-title" on:click={handleClick}>Basic Details</h3>
+            <div class="upword-arrow">
                 {#if open}
                     <Icon
                         icon="ic:baseline-keyboard-arrow-up"
@@ -46,7 +46,7 @@
         </div>
 
         {#if open}
-            <div class="Active" transition:slide>
+            <div class="active" transition:slide>
                 <InputBlock
                     placeholder="Add Name"
                     id="name"
@@ -100,6 +100,8 @@
 <style>
     h3 {
         width: 95%;
+        padding-left: 10px;
+        font-family: initial
     }
     h3:hover {
         cursor: pointer;
@@ -110,7 +112,7 @@
         position: absolute;
         right: 25px;
     } */
-    .contentBox {
+    .content-box {
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -118,16 +120,17 @@
             0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
-    .AccordionHeading {
+    .accordion-heading {
         display: flex;
     }
-    .UpwordArrow {
+    .upword-arrow {
         width: 5%;
         padding-top: 18px;
     }
     .errors{
         color: red;
-        padding-left: 240px;
+        /* padding-left: 240px; */
+        text-align: start;
         width: 100%
     }
 </style>

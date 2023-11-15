@@ -10,6 +10,7 @@
     import { prevent_default } from "svelte/internal";
     
     
+    
     import {validateEmail, validateName, validatePhone,validateUrl,validateSummary,validateAddress,validateStreet,validateCity,validatePincode,validateCountry,validateQualification,validateCourseName,validateInstitute,validateLocation} from "./validation";
     export let backward_link = "< Back to all Resume List";
 
@@ -130,13 +131,13 @@
 
 <main>
     {#if showError}
-    <div class="Alert">
-        <p class="WarningMessage">Please fill required Fields correctly</p>
-        <p class="CloseButton" on:click={() => (showError = false)} >&times;</p>
+    <div class="alert">
+        <p class="warning-message">Please fill required Fields correctly</p>
+        <p class="close-button" on:click={() => (showError = false)} >&times;</p>
         
     </div>
     {/if}
-    <div class="formHeading">
+    <div class="form-heading">
         <a href="#/">{backward_link}</a>
         <h2>Add Resume Content</h2>
     </div>
@@ -160,7 +161,7 @@
         <Work bind:work />
         <Skills bind:skills />
         <ProjectDetails bind:project />
-        <div class="submissionButtons">
+        <div class="submission-buttons">
             <Button typeOfButton="cancel" button_label="cancel" />
             <Button typeOfButton="save" button_label="save" type="submit" />
         </div>
@@ -168,7 +169,7 @@
 </main>
 
 <style>
-    .formHeading {
+    .form-heading {
         width: 100%;
         height: auto;
         background-color: #e7ebef;
@@ -181,24 +182,26 @@
         margin: 0;
         padding-top: 6px;
         padding-bottom: 6px;
+        padding-left: 7px;
+        font-family: ui-sans-serif;
     }
-    .submissionButtons {
+    .submission-buttons {
         display: flex;
         justify-content: end;
     }
-    .WarningMessage{
+    .warning-message{
         margin: 0;
         text-align: center;
         color: red;
         width: 95%;
     }
-    .CloseButton{
+    .close-button{
         margin: 0;
         text-align: center;
         cursor: pointer;
         width: 5%;
     }
-    .Alert{
+    .alert{
         background-color: #d5b5b5;
         display: flex;
         padding: 5px;

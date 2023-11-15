@@ -25,10 +25,10 @@
     // export let user_name = '';
 </script>
 
-<div class="contentBox">
-    <div class="AccordionHeading">
-        <h3 class="subTitle" on:click={handleClick}>Social Media</h3>
-        <div class="UpwordArrow">
+<div class="content-box">
+    <div class="accordion-heading">
+        <h3 class="sub-title" on:click={handleClick}>Social Media</h3>
+        <div class="upword-arrow">
             {#if open}
                 <Icon icon="ic:baseline-keyboard-arrow-up" width = "24" height= "24" color="black"/>
             {:else}
@@ -38,7 +38,7 @@
     </div>
     {#if open}
         {#each social_media as social_media_data, i}
-            <div class="Active" transition:slide>
+            <div class="active" transition:slide>
                 <InputBlock
                     placeholder="Add Network"
                     id="network"
@@ -58,7 +58,7 @@
                     bind:value={social_media_data.user_name}
                 />
             </div>
-            <div class="SocialMediaButtons">
+            <div class="social-media-buttons">
                 <button on:click|preventDefault={addSocialData}
                     >Add New Social Media</button
                 >
@@ -75,6 +75,8 @@
 <style>
     h3 {
         width: 95%;
+        padding-left: 10px;
+        font-family: initial
     }
     h3:hover {
         cursor: pointer;
@@ -85,27 +87,29 @@
         position: absolute;
         right: 25px;
     } */
-    .SocialMediaButtons{
+    .social-media-buttons{
         margin-top: 10px;
    }
-   .SocialMediaButtons button{
+   .social-media-buttons button{
         width: 175px;
         background-color: white;
-        color: black;
+        color: blue;
         border-radius: 5px;
+        border-color: white;
+        cursor: pointer;
    }
-   .contentBox{
+   .content-box{
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
         /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
-    .AccordionHeading{
+    .accordion-heading{
         display: flex;
 
     }
-    .UpwordArrow{
+    .upword-arrow{
         width: 5%;
         padding-top: 18px;
     }

@@ -52,8 +52,8 @@ export function validateUrl(image_url){
 }
 export function validateName(name){
     let error = "";
-    if (name.trim().length < 2){
-        error = "Name should contain more than one letters";
+    if (name.trim().length < 1){
+        error = "Name can not be empty";
         return error; 
     }
     else {
@@ -75,7 +75,7 @@ export function validateSummary(summary){
 }
 export function validateAddress(address){
     let error = "";
-    if (address.trim().length < 2){
+    if (address.trim().length < 1){
         error = "Address should not be empty";
         return error; 
     }
@@ -86,7 +86,7 @@ export function validateAddress(address){
 }
 export function validateStreet(street){
     let error = "";
-    if (street.trim().length < 2){
+    if (street.trim().length < 1){
         error = "Street should not be empty";
         return error; 
     }
@@ -97,7 +97,7 @@ export function validateStreet(street){
 }
 export function validateCity(city){
     let error = "";
-    if (city.trim().length < 2){
+    if (city.trim().length < 1){
         error = "City should not be empty";
         return error; 
     }
@@ -108,7 +108,7 @@ export function validateCity(city){
 }
 export function validatePincode(pincode){
     let error = "";
-    if (pincode.trim().length < 2){
+    if (pincode.trim().length < 1){
         error = "pincode should not be empty";
         return error; 
     }

@@ -4,44 +4,41 @@
     export let placeholder = "";
     export let label = "";
     export let value;
-   
-
-    // export let error;
-    // export let changeHandler;
-   
+      
 </script>
 
 <main>
-    <div class="formContent">
-        <div class="inputField">
+    <!-- Input block for text inputs  -->
+    <div class="form-content">
+        <div class="input-field">
+            <!-- label -->
             <div class="label">
                 <label for={id}>{label}</label>
             </div>
-            <div class="inputEntry">
+            <!-- Input block -->
+            <div class="input-entry">
                 <input {id} type="text" {placeholder} bind:value />
-                <!-- <input {id} type="text" {placeholder} bind:value on:change={changeHandler}/> -->
-                <!-- <span>{error}</span> -->
             </div>
         </div>
     </div>
 </main>
 
 <style>
-    .inputField {
+    .input-field {
         display: flex;
-        border: solid 0.1px gray;
+        border: solid 0.1px white;
         height: 43px;
     }
     .label {
         width: 20%;
         background-color: #f4f6f8;
-        height: 43px;
+        height: 45px;
     }
     label {
         padding-left: 12px;
         padding-top: 10px;
     }
-    .inputEntry {
+    .input-entry {
         width: 80%;
         height: 43px;
     }
@@ -52,12 +49,19 @@
         border-radius: 0px;
         margin: 0px;
 
-        border-top-color: white;
-        border-left-color: white;
-        border-right-color: white;
+        
         margin-left: 7px;
-        border-bottom: 2px solid black;
+        outline: none;
+        border:hidden;
+        border-bottom: 2px inset;
+        
+        
     }
+    input[type="text"]:hover{
+        border-bottom: 2px solid blue;
+        outline: none;
+    }
+
     /* input[type="email"] {
         width: 100%;
         height: 38px;

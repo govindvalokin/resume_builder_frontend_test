@@ -20,10 +20,10 @@
       }
     }
 </script>
-<div class="contentBox">
-    <div class="AccordionHeading">
-        <h3 class="subTitle" on:click={handleClick}>Skills</h3>
-        <div class="UpwordArrow">
+<div class="content-box">
+    <div class="accordion-heading">
+        <h3 class="sub-title" on:click={handleClick}>Skills</h3>
+        <div class="upword-arrow">
             {#if open}
                 <Icon icon="ic:baseline-keyboard-arrow-up" width = "24" height= "24" color="black"/>
             {:else}
@@ -33,11 +33,11 @@
     </div>
     {#if open}
     {#each skills as skill, i}
-    <div class="Active" transition:slide>
+    <div class="active" transition:slide>
         <InputBlock placeholder = "Add Skill Name" id = "skill-name" label = "Skill Name" bind:value={skill.skill_name} />
         <SkillLevelSelectComponent label="Level" options={skill_options} bind:value={skill.level} default_value="Select Skill Level" />
     </div>
-    <div class="SkillButtons">
+    <div class="skill-buttons">
     <button on:click|preventDefault={addSkill}>Add New Skill</button>
     {#if i !== 0}
         <button on:click|preventDefault={() => removeSkill(i)}>Remove Skill</button>
@@ -50,6 +50,8 @@
 <style>
     h3{
        width: 95%;
+       padding-left: 10px;
+       font-family: initial
    }
    h3:hover{
     cursor: pointer;
@@ -61,27 +63,29 @@
        right: 25px;
        
    } */
-   .SkillButtons{
+   .skill-buttons{
         margin-top: 10px;
    }
-   .SkillButtons button{
+   .skill-buttons button{
         width: 123px;
         background-color: white;
-        color: black;
+        color: blue;
         border-radius: 5px;
+        border-color: white;
+        cursor: pointer;
    }
-   .contentBox{
+   .content-box{
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
         /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
-    .AccordionHeading{
+    .accordion-heading{
         display: flex;
 
     }
-    .UpwordArrow{
+    .upword-arrow{
         width: 5%;
         padding-top: 18px;
     }
