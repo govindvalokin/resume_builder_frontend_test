@@ -9,7 +9,7 @@
     <h1>Resumes</h1><hr>
     <div class="NavContent">
         <div class="SearchBar">
-            <input type="search" placeholder="Search by Name or Email" >
+            <input type="search" placeholder="Search by Email" >
             <div class="SearchIconClass">
                 <Icon icon={searchIcon}/>
             </div>     
@@ -27,10 +27,10 @@
     .SearchIconClass{
         
         width: 24px;
-        height: auto;
+        height: 27px;
 
         padding-top: 8px;
-        margin-left: 4px;
+        
     }
     .SearchBar{
         display: flex;
@@ -38,10 +38,12 @@
     .NavContent{
         display: flex;
         justify-content: space-between;
-        background-color: #d7d7d7;
+        background-color: #e7ebef;
         padding-top: 9px;
         /* margin-bottom: 5px; */
         height: auto;
+        padding-left: 3px;
+        padding-right: 6px;
         
     }
     .AddNew{
@@ -51,15 +53,17 @@
         margin-bottom: 5px;
         margin-top: 5px;
         font-weight: normal;
+        padding-left: 2px;
     }
     main{
-        background-color: #d7d7d7;
+        background-color: #e7ebef;
+        margin-bottom: 8px;
     }
     hr{
         margin: 0px;
     }
     input[type="search"]{
-        background-color: #d7d7d7;
+        background-color: #e7ebef;
         border: 1px solid black;
     }
     

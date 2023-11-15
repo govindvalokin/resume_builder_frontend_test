@@ -1,8 +1,11 @@
 <script>
 import Icon from '@iconify/svelte';
 import dotsY from '@iconify/icons-pepicons-pop/dots-y';
+    import DeleteBox from './DeleteBox.svelte';
     
 
+export let open = false;
+const handleDeleteBox = () => (open = !open);
 
 export let show_menu = false;
 function toggleMenu() {
@@ -10,10 +13,12 @@ function toggleMenu() {
    }
 
 
-
 </script>
 <main>
     
+    {#if open}
+    <DeleteBox on:click={handleDeleteBox}/>
+    {/if}
     <table>
         <tr>
             <th>ID</th>
@@ -33,8 +38,11 @@ function toggleMenu() {
                 </div>
                 {#if show_menu}
                     <div class="dropdown-content">
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
+                        <!-- <a href="#">Edit</a> -->
+                        <!-- <a href="#" on:click={handleDelete,}>Delete</a> -->
+
+                        <a href="#" on:click={() => { show_menu = false; }}>Edit</a>
+                        <a href="#" on:click={() => { show_menu = false; handleDeleteBox(); }}>Delete</a>
 
                         <!-- <button id="edit_button">Edit</button>
                         <button id="delete_button">Delete</button> -->
@@ -44,6 +52,7 @@ function toggleMenu() {
             </td>
         </tr>
     </table>
+   
 </main>
 <style>
 table{

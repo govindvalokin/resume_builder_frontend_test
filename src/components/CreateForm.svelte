@@ -13,6 +13,8 @@
     import {validateEmail, validateName, validatePhone,validateUrl,validateSummary,validateAddress,validateStreet,validateCity,validatePincode,validateCountry,validateQualification,validateCourseName,validateInstitute,validateLocation} from "./validation";
     export let backward_link = "< Back to all Resume List";
 
+    let showError = false;
+
     export let form_data = {};
 
     export let name = "";
@@ -34,7 +36,7 @@
             institute_name: "",
             location: "",
             academic_year_start: "",
-            accademic_year_end: "",
+            academic_year_end: "",
         },
     ];
     export let social_media = [{ network: "", url: "", user_name: "" }];
@@ -55,16 +57,20 @@
 
     function handleSubmit() {
         form_data = {
-            name,
-            email,
-            phone,
-            image_url,
-            summary,
-            address,
-            street,
-            city,
-            pincode,
-            country,
+        basic_details:{
+                name,
+                email,
+                phone,
+                image_url,
+                summary,
+                },
+        location_details:{
+                address,
+                street,
+                city,
+                pincode,
+                country,
+            },
             education,
             social_media,
             work,
@@ -102,12 +108,18 @@
             };
         if (phoneCheck != "" || emailCheck != "" || imageUrlCheck != "" || nameCheck != "" ||  summaryCheck != "") {
             prevent_default();
+            showError = true;
+            window.scrollTo(0,0);
             
         }
         else if (addressCheck != "" || streetCheck != "" ||    cityCheck != "" ||    pincodeCheck != "" ||    countryCheck != "") {
-            prevent_default();    
+            prevent_default(); 
+            showError = true;
+            window.scrollTo(0,0);   
         }else if ( educationErrors != "") {
             prevent_default();
+            showError = true;
+            window.scrollTo(0,0);
         }
         
         else {
@@ -117,6 +129,13 @@
 </script>
 
 <main>
+    {#if showError}
+    <div class="Alert">
+        <p class="WarningMessage">Please fill required Fields correctly</p>
+        <p class="CloseButton" on:click={() => (showError = false)} >&times;</p>
+        
+    </div>
+    {/if}
     <div class="formHeading">
         <a href="#/">{backward_link}</a>
         <h2>Add Resume Content</h2>
@@ -152,10 +171,37 @@
     .formHeading {
         width: 100%;
         height: auto;
-        background-color: #f9fafb;
+        background-color: #e7ebef;
+
+        padding-top: 8px;
+        padding-left: 4px;
+
+    }
+    h2{
+        margin: 0;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
     .submissionButtons {
         display: flex;
         justify-content: end;
+    }
+    .WarningMessage{
+        margin: 0;
+        text-align: center;
+        color: red;
+        width: 95%;
+    }
+    .CloseButton{
+        margin: 0;
+        text-align: center;
+        cursor: pointer;
+        width: 5%;
+    }
+    .Alert{
+        background-color: #d5b5b5;
+        display: flex;
+        padding: 5px;
+
     }
 </style>

@@ -8,7 +8,7 @@
     import { validateCourseName, validateInstitute, validateLocation, validateQualification } from "./validation";
 	const handleClick = () => open = !open;
 
-    export let education = [{ qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', accademic_year_end:''}]
+    export let education = [{ qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}]
     // export let qualification='';
     // export let course_name = '';
     // export let institute_name = '';
@@ -17,7 +17,7 @@
     // export let accademic_year_end='';
 
     function addEducation() {
-      education = [...education, { qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', accademic_year_end:''}];
+      education = [...education, { qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}];
     }
     function removeEducation(index) {
       if (education.length > 1) {
@@ -47,8 +47,8 @@
         <div class="errors">{education_data.institute_name && validateInstitute(education_data.institute_name)}</div>
         <InputBlock placeholder = "Add Location" id = "location" label = "Location" bind:value={education_data.location} />
         <div class="errors">{education_data.location && validateLocation(education_data.location)}</div>
-        <DateBlock placeholder = "Add Accademic Year Start" id = "accademic_year_start" label = "Accademic Year Start" bind:value={education_data.academic_year_start} />
-        <DateBlock placeholder = "Add Accademic Year End" id = "accademic_year_end" label = "Accademic Year End" bind:value={education_data.accademic_year_end} />	
+        <DateBlock placeholder = "Add Academic Year Start" id = "academic_year_start" label = "Academic Year Start" bind:value={education_data.academic_year_start} />
+        <DateBlock placeholder = "Add Academic Year End" id = "academic_year_end" label = "Academic Year End" bind:value={education_data.academic_year_end} />	
     </div>
     <div class="EducationButtons">
         <button on:click|preventDefault={addEducation}>Add New Qualification</button>
@@ -86,7 +86,8 @@
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
-        box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset;
+        /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
     .AccordionHeading{
         display: flex;

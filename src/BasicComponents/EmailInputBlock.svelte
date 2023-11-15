@@ -52,31 +52,18 @@
         padding-left: 5px;
         border-radius: 0px;
         margin: 0px;
-
-        border-top-color: white;
-        border-left-color: white;
-        border-right-color: white;
         margin-left: 7px;
-        border-bottom-color:white ;
-        /* outline: white; */
-        /* border-bottom: 2px solid black; */
-        outline: none;
+   
+        outline: hidden;
+        border:hidden;
+        border-bottom: 2px inset;
     }
-    input[type="email"]:active {
-        border-bottom: 2px solid black;
-        border-top-color: white;
-        border-left-color: white;
-        border-right-color: white;
-        /* outline: white; */
-        outline: none;
-        
-        
+    input[type="email"]:active{   
+        /* border-bottom-color:black ; */
+        /* border-bottom: 2px solid black ; */
+        outline-color: white;
+        border: hidden;
+    
     }
-    /* input[type="date"] {
-        width: 100%;
-        height: 38px;
-        padding-left: 5px;
-        border-radius: 0px;
-        margin: 0px;
-    } */
+    
 </style>
