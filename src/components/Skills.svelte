@@ -9,8 +9,7 @@
 	const handleClick = () => open = !open;
 
     export let skills = [{ skill_name: '', level: ''}]
-    // export let skill_name = '';
-    // export let level = '';
+    
     function addSkill() {
       skills = [...skills, {skill_name: '', level: ''}];
     }
@@ -57,12 +56,6 @@
     cursor: pointer;
    }
   
-   /* .subTitle::before{
-       content: '+';
-       position: absolute;
-       right: 25px;
-       
-   } */
    .skill-buttons{
         margin-top: 10px;
    }
@@ -78,7 +71,6 @@
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
-        /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
     .accordion-heading{

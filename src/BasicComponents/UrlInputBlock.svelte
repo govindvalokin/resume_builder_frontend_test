@@ -7,11 +7,14 @@
 </script>
 
 <main>
+    <!-- Input block for urls -->
     <div class="form-content">
         <div class="input-field">
+            <!-- Label -->
             <div class="label">
                 <label for={id}>{label}</label>
             </div>
+            <!-- Input box -->
             <div class="input-entry">
                 <input {id} type="url" {placeholder} bind:value />
                 <!-- <input {id} type="text" {placeholder} /> -->

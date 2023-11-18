@@ -11,6 +11,8 @@
     
     
     
+    
+    
     import {validateEmail, validateName, validatePhone,validateUrl,validateSummary,validateAddress,validateStreet,validateCity,validatePincode,validateCountry,validateQualification,validateCourseName,validateInstitute,validateLocation} from "./validation";
     export let backward_link = "< Back to all Resume List";
 
@@ -56,22 +58,22 @@
         { project_title: "", skills_earned: "", description: "" },
     ];
 
-    function handleSubmit() {
+    async function handleSubmit() {
         form_data = {
-        basic_details:{
-                name,
-                email,
-                phone,
-                image_url,
-                summary,
+            basic_details:{
+                    name,
+                    email,
+                    phone,
+                    image_url,
+                    summary,
                 },
-        location_details:{
-                address,
-                street,
-                city,
-                pincode,
-                country,
-            },
+            location_details:{
+                    address,
+                    street,
+                    city,
+                    pincode,
+                    country,
+                },
             education,
             social_media,
             work,
@@ -124,8 +126,26 @@
         }
         
         else {
-            console.log(JSON.stringify(form_data, null, 2));
-        }
+            //API integration - POST
+            try{
+                const response = await fetch("http://127.0.0.1:8000/create-new-resume",{
+                    method : "POST",
+                    mode : "cors",
+                    cache : "default",
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    body: JSON.stringify(form_data)
+                });
+                const result = await response.json();
+                console.log("Success:", result);
+            }
+            catch(error){
+                // console.error("Error:", error);
+                console.log(error);
+            }
+            console.log(form_data);
+        };
     }
 </script>
 

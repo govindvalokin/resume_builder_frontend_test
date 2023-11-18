@@ -7,11 +7,14 @@
 </script>
 
 <main>
+    <!-- Input block for select input -->
     <div class="form-content">
         <div class="input-field">
+            <!-- Label -->
             <div class="label">
                 <label for={id}>{label}</label>
             </div>
+            <!-- Select input box -->
             <div class="input-entry">
                 <select bind:value>
                     <option value="">{default_value}</option> 

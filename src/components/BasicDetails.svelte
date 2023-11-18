@@ -9,6 +9,8 @@
 
     export let open = false;
     import { slide } from "svelte/transition";
+
+    // Function for handling accordion
     const handleClick = () => (open = !open);
 
     export let name = "";
@@ -16,16 +18,16 @@
     export let phone = "";
     export let image_url = "";
     export let summary = "";
-
-   
-
    
 </script>
 
 <main>
+    <!-- Basic details accordian -->
     <div class="content-box">
         <div class="accordion-heading">
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <h3 class="sub-title" on:click={handleClick}>Basic Details</h3>
+            <!-- Upword and downward arrows -->
             <div class="upword-arrow">
                 {#if open}
                     <Icon
@@ -45,6 +47,7 @@
             </div>
         </div>
 
+        <!-- Accordion Content -->
         {#if open}
             <div class="active" transition:slide>
                 <InputBlock
@@ -53,6 +56,7 @@
                     label="Name"
                     bind:value={name}
                 />
+                <!-- Error message display block -->
                 <div class="errors">{name && validateName(name)}</div>
                 <EmailBlock
                     placeholder="Add Email"
@@ -60,6 +64,7 @@
                     label="Email"
                     bind:value={email}
                 />
+                <!-- Error message display block  -->
                 <div class="errors">{email && validateEmail(email)}</div>
                 <InputBlock
                     placeholder="Add Phone Number"
@@ -67,23 +72,15 @@
                     label="Phone"
                     bind:value={phone}    
                 />
+                <!-- Error message display block -->
                 <div class="errors">{phone && validatePhone(phone)}</div>
-            
-
-                <!-- <InputBlock
-                    placeholder="Add Phone Number"
-                    id="phone"
-                    label="Phone"
-                    bind:value = "{phone}"
-                    on:KeyUp = {validatePhone(phonr)}   
-                /> -->
-
                 <UrlBlock
                     placeholder="Add Image URL"
                     id="image-url"
                     label="Image URL"
                     bind:value={image_url}
                 />
+                <!-- Error message display block -->
                 <div class="errors">{image_url && validateUrl(image_url)}</div>
                 <InputBlock
                     placeholder="Add Summary"
@@ -91,6 +88,7 @@
                     label="summary"
                     bind:value={summary}
                 />
+                <!-- Error message display block -->
                 <div class="errors">{summary && validateSummary(summary)}</div>
             </div>
         {/if}
@@ -98,6 +96,7 @@
 </main>
 
 <style>
+    /* Accordion styles */
     h3 {
         width: 95%;
         padding-left: 10px;
@@ -106,18 +105,10 @@
     h3:hover {
         cursor: pointer;
     }
-
-    /* .subTitle::before {
-        content: "^";
-        position: absolute;
-        right: 25px;
-    } */
     .content-box {
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
-        /* box-shadow: 0 20px 10px -20px rgba(0, 0, 0, 0.45) inset,
-            0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
     .accordion-heading {
@@ -129,8 +120,8 @@
     }
     .errors{
         color: red;
-        /* padding-left: 240px; */
         text-align: start;
-        width: 100%
+        width: 100%;
+        font-size: small;
     }
 </style>

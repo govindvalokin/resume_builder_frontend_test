@@ -7,14 +7,16 @@
 </script>
 
 <main>
+    <!-- Input block for email input -->
     <div class="form-content">
         <div class="input-field">
+            <!-- Label -->
             <div class="label">
                 <label for={id}>{label}</label>
             </div>
+            <!-- Email input box -->
             <div class="input-entry">
                 <input {id} type="email" {placeholder} bind:value />
-                <!-- <input {id} type="text" {placeholder} /> -->
             </div>
         </div>
     </div>

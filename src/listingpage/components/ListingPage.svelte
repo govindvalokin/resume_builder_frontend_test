@@ -1,12 +1,12 @@
 <script>
     
     import ListingTable from "./ListingTable.svelte";
-    import NavBar from "./NavBar.svelte";
+    // import NavBar from "./NavBar.svelte";
 
 
 </script>
 <main>
-    <NavBar/>
+    <!-- <NavBar/> -->
     <ListingTable/>
     
 </main>

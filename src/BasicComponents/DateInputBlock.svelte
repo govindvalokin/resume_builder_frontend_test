@@ -1,20 +1,22 @@
 <script>
-    // export let type = "";
+    
     export let id = "";
-    export let placeholder = "";
+    // export let placeholder = "";
     export let label = "";
     export let value;
 </script>
 
 <main>
+    <!-- Date input block -->
     <div class="form-content">
         <div class="input-field">
+            <!-- Label -->
             <div class="label">
                 <label for={id}>{label}</label>
             </div>
+            <!-- Date input box -->
             <div class="input-entry">
-                <input {id} type="date" {placeholder} bind:value />
-                <!-- <input {id} type="text" {placeholder} /> -->
+                <input {id} type="date" bind:value />
             </div>
         </div>
     </div>

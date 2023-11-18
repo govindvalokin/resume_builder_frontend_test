@@ -64,13 +64,13 @@
                 bind:value="{work_data.key_roles}"
             />
             <DateBlock
-                placeholder="Add Start Date"
+                
                 id="start-date"
                 label="Start Date"
                 bind:value="{work_data.start_date}"
             />
             <DateBlock
-                placeholder="Add End Date"
+                
                 id="end-date"
                 label="End Date"
                 bind:value="{work_data.end_date}"
