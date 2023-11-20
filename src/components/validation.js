@@ -1,3 +1,4 @@
+// Function for phone validation
 export function validatePhone(phone) {
     
     const regexmob = /^\d{10}$/;
@@ -16,7 +17,7 @@ export function validatePhone(phone) {
         return error;
     }
 }
-
+// Email validation
 export function validateEmail(email){
     const regexemail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     let error = "";
@@ -33,6 +34,7 @@ export function validateEmail(email){
         return error;
     }
 }
+// url validation
 export function validateUrl(image_url){
     const regexurl = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
     let error = "";
@@ -50,6 +52,7 @@ export function validateUrl(image_url){
     }
 
 }
+// name validation
 export function validateName(name){
     let error = "";
     if (name.trim().length < 1){
@@ -61,7 +64,7 @@ export function validateName(name){
         return error;
     }
 }
-
+// summary validation
 export function validateSummary(summary){
     let error = "";
     if (summary.trim().length <= 10){
@@ -73,6 +76,7 @@ export function validateSummary(summary){
         return error;
     }
 }
+// Address validation
 export function validateAddress(address){
     let error = "";
     if (address.trim().length < 1){
@@ -84,6 +88,7 @@ export function validateAddress(address){
         return error;
     }
 }
+// street validation
 export function validateStreet(street){
     let error = "";
     if (street.trim().length < 1){
@@ -95,6 +100,7 @@ export function validateStreet(street){
         return error;
     }
 }
+// city validation
 export function validateCity(city){
     let error = "";
     if (city.trim().length < 1){
@@ -106,6 +112,7 @@ export function validateCity(city){
         return error;
     }
 }
+// pincode validation
 export function validatePincode(pincode){
     let error = "";
     if (pincode.trim().length < 1){
@@ -117,6 +124,7 @@ export function validatePincode(pincode){
         return error;
     }
 }
+// country validation
 export function validateCountry(country){
     let error ="";
     if (country != "India" && country != "Canada" && country != "United Kingdom" && country != "United States" && country != "Australia" && country != "China" && country != "Qatar"){
@@ -129,22 +137,19 @@ export function validateCountry(country){
     }
 
 }
+// qualification validation
 export function validateQualification(qualification){
     let error = "";
     if(qualification.trim() == ""){
         error = "Qualification should not be empty";
         return error; 
     } 
-    // else if(qualification.length < 2){
-    //     error = "Qualification should not be empty";
-    //     return error; 
-    // }
-    
     else {
         error = "";
         return error;
     }
 }
+// course name validation
 export function validateCourseName(course_name){
     let error = "";
     if (course_name.trim() == ""){
@@ -156,6 +161,7 @@ export function validateCourseName(course_name){
         return error;
     }
 }
+// institute validation
 export function validateInstitute(institute){
     let error = "";
     if (institute.trim() == ""){
@@ -167,6 +173,7 @@ export function validateInstitute(institute){
         return error;
     }
 }
+// location validation
 export function validateLocation(location){
     let error = "";
     if (location.trim() == ""){

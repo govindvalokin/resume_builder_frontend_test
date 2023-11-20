@@ -3,20 +3,17 @@
     import DateBlock from "../BasicComponents/DateInputBlock.svelte";
     import Icon from '@iconify/svelte';
 
+    // for accordion control
     export let open = false;
     import { slide } from "svelte/transition";
     const handleClick = () => (open = !open);
 
     export let work = [{ organisation: '', job_role: '', job_location: '', key_roles: '', start_date:'', end_date:'' }]
-    // export let organisation = '';
-    // export let job_role = '';
-    // export let job_location = '';
-    // export let key_roles = '';
-    // export let start_date = '';
-    // export let end_date = '';
+    // Function for adding additional work field
     function addWork(){
         work = [...work, { organisation: '', job_role: '', job_location: '', key_roles: '', start_date:'', end_date:'' }]
     }
+    // Function for removing additional work fields
     function removeWork(index) {
       if (work.length > 1) {
         work = work.filter((_, i) => i !== index);
@@ -24,9 +21,10 @@
     }
 
 </script>
-
+<!-- Accordion -->
 <div class="content-box">
     <div class="accordion-heading">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <h3 class="subTitle" on:click={handleClick}>Work</h3>
         <div class="upword-arrow">
             {#if open}
@@ -36,6 +34,7 @@
             {/if}
         </div>
     </div>
+    <!-- Accordion content -->
     {#if open}
     {#each work as work_data, i}
         <div class="active" transition:slide>
@@ -76,10 +75,11 @@
                 bind:value="{work_data.end_date}"
             />
         </div>
+        <!-- Buttons for adding or removing additional work fields -->
         <div class="work-buttons">
-            <button on:click|preventDefault={addWork}>Add New Work</button>
+            <button on:click|preventDefault={addWork}>+ Add</button>
             {#if i !== 0}
-                <button on:click|preventDefault={() => removeWork(i)}>Remove Work</button>
+                <button on:click|preventDefault={() => removeWork(i)}>- Remove</button>
             {/if}
         </div>
     {/each}
@@ -96,27 +96,24 @@
         cursor: pointer;
     }
 
-    /* .subTitle::before {
-        content: "+";
-        position: absolute;
-        right: 25px;
-    } */
+    
     .work-buttons{
         margin-top: 10px;
    }
    .work-buttons button{
-        width: 123px;
+        width: 82px;
         background-color: white;
-        color: blue;
+        color: #209FA4;;
         border-radius: 5px;
-        border-color: white;
+        /* border-color: white; */
         cursor: pointer;
+        font-family: ui-serif;
+        margin-left: 7px;
    }
    .content-box{
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
-        /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
     .accordion-heading{

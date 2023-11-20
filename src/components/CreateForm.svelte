@@ -1,5 +1,5 @@
 <script>
-    import Address2 from "./Address2.svelte";
+    import Address from "./Address.svelte";
     import BasicDetails from "./BasicDetails.svelte";
     import Button from "../BasicComponents/Button.svelte";
     import Education from "./Education.svelte";
@@ -12,26 +12,32 @@
     
     
     
-    
+    // Importing validation functions
     import {validateEmail, validateName, validatePhone,validateUrl,validateSummary,validateAddress,validateStreet,validateCity,validatePincode,validateCountry,validateQualification,validateCourseName,validateInstitute,validateLocation} from "./validation";
     export let backward_link = "< Back to all Resume List";
 
+    // Error message variables
     let showError = false;
+    let successMessage = "";
+    let backendErrorMessage = "";
 
     export let form_data = {};
 
+    // variables for basic_details binding
     export let name = "";
     export let email = "";
     export let phone = "";
     export let image_url = "";
     export let summary = "";
 
+    // variables for location_details binding
     export let address = "";
     export let street = "";
     export let city = "";
     export let pincode = "";
     export let country = "";
 
+    // variables for education data
     export let education = [
         {
             qualification: "",
@@ -42,7 +48,9 @@
             academic_year_end: "",
         },
     ];
+    // variables for social_media data
     export let social_media = [{ network: "", url: "", user_name: "" }];
+    // variables for work data
     export let work = [
         {
             organisation: "",
@@ -53,12 +61,16 @@
             end_date: "",
         },
     ];
+    // variable for skill data
     export let skills = [{ skill_name: "", level: "" }];
+    // variable for project data
     export let project = [
         { project_title: "", skills_earned: "", description: "" },
     ];
 
+    // function for handling form submission
     async function handleSubmit() {
+        // final Json data
         form_data = {
             basic_details:{
                     name,
@@ -80,6 +92,7 @@
             skills,
             project,
         };
+        // calling validation functions for onsubmit validation
         let phoneCheck = validatePhone(phone);
         let emailCheck = validateEmail(email);
         let imageUrlCheck = validateUrl(image_url);
@@ -139,10 +152,15 @@
                 });
                 const result = await response.json();
                 console.log("Success:", result);
+                successMessage = "Form successfully submitted"
+                window.scrollTo(0, 0);
+                
             }
             catch(error){
                 // console.error("Error:", error);
                 console.log(error);
+                backendErrorMessage = "Something went wrong. Can't subit the form!!";
+                window.scrollTo(0, 0);
             }
             console.log(form_data);
         };
@@ -150,17 +168,36 @@
 </script>
 
 <main>
+    <!-- Error display messages -->
     {#if showError}
     <div class="alert">
         <p class="warning-message">Please fill required Fields correctly</p>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <p class="close-button" on:click={() => (showError = false)} >&times;</p>
         
     </div>
     {/if}
+    {#if backendErrorMessage != ""}
+        <div class="alert-success">
+            <p class="success-message">{backendErrorMessage}</p>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <p class="close-button" on:click={() => (backendErrorMessage = "")} >&times;</p>
+        </div>
+    {/if}
+    <!-- Success message after form submission -->
+    {#if successMessage != ""}
+        <div class="alert-success">
+            <p class="success-message">{successMessage}</p>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <p class="close-button" on:click={() => (successMessage = "")} >&times;</p>
+        </div>
+    {/if}
+    <!-- heading -->
     <div class="form-heading">
         <a href="#/">{backward_link}</a>
         <h2>Add Resume Content</h2>
     </div>
+    <!-- calling components and binding values with variables -->
     <form on:submit|preventDefault={handleSubmit}>
         <BasicDetails
             bind:name
@@ -169,7 +206,7 @@
             bind:image_url
             bind:summary
         />
-        <Address2
+        <Address
             bind:address
             bind:street
             bind:city
@@ -181,6 +218,7 @@
         <Work bind:work />
         <Skills bind:skills />
         <ProjectDetails bind:project />
+        <!-- form submit and cancel buttons -->
         <div class="submission-buttons">
             <Button typeOfButton="cancel" button_label="cancel" />
             <Button typeOfButton="save" button_label="save" type="submit" />
@@ -215,6 +253,12 @@
         color: red;
         width: 95%;
     }
+    .success-message{
+        margin: 0;
+        text-align: center;
+        color: rgb(62, 49, 177);
+        width: 95%;
+    }
     .close-button{
         margin: 0;
         text-align: center;
@@ -226,5 +270,10 @@
         display: flex;
         padding: 5px;
 
+    }
+    .alert-success{
+        background-color: #a1e566;
+        display: flex;
+        padding: 5px;
     }
 </style>

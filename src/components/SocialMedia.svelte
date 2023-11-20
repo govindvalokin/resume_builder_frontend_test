@@ -3,30 +3,33 @@
     import UrlBlock from "../BasicComponents/UrlInputBlock.svelte";
     import Icon from '@iconify/svelte';
 
+    // Function for handling accordion
     export let open = false;
     import { slide } from "svelte/transition";
     const handleClick = () => (open = !open);
 
+
     export let social_media = [{ network: "", url: "", user_name: "" }];
+    // Function for adding additional social media fields
     function addSocialData() {
         social_media = [
             ...social_media,
             { network: "", url: "", user_name: "" },
         ];
     }
+    // Function for removing additional social media fields
     function removeSocialMedia(index) {
         if (social_media.length > 1) {
             social_media = social_media.filter((_, i) => i !== index);
         }
     }
 
-    // export let network = '';
-    // export let url = '';
-    // export let user_name = '';
+   
 </script>
-
+<!-- Accordion -->
 <div class="content-box">
     <div class="accordion-heading">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <h3 class="sub-title" on:click={handleClick}>Social Media</h3>
         <div class="upword-arrow">
             {#if open}
@@ -36,6 +39,7 @@
             {/if}
         </div>
     </div>
+    <!-- Accordion content -->
     {#if open}
         {#each social_media as social_media_data, i}
             <div class="active" transition:slide>
@@ -58,13 +62,14 @@
                     bind:value={social_media_data.user_name}
                 />
             </div>
+            <!-- Buttons for adding or removing additional social media fields -->
             <div class="social-media-buttons">
                 <button on:click|preventDefault={addSocialData}
-                    >Add New Social Media</button
+                    >+ Add</button
                 >
                 {#if i !== 0}
                     <button on:click|preventDefault={() => removeSocialMedia(i)}
-                        >Remove Social Media</button
+                        >- Remove</button
                     >
                 {/if}
             </div>
@@ -82,27 +87,23 @@
         cursor: pointer;
     }
 
-    /* .subTitle::before {
-        content: "+";
-        position: absolute;
-        right: 25px;
-    } */
+    
     .social-media-buttons{
         margin-top: 10px;
    }
    .social-media-buttons button{
-        width: 175px;
+        width: 82px;
         background-color: white;
-        color: blue;
+        color: #209FA4;;
         border-radius: 5px;
-        border-color: white;
         cursor: pointer;
+        font-family: ui-serif;
+        margin-left: 7px;
    }
    .content-box{
         border: 1px solid white;
         margin-top: 10px;
         margin-bottom: 10px;
-        /* box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset; */
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     }
     .accordion-heading{

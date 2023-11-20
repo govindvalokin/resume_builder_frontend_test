@@ -5,12 +5,26 @@
 
     export let open = false;
     import { slide } from 'svelte/transition';
-    import { validateCourseName, validateInstitute, validateLocation, validateQualification } from "./validation";
+    import { validateCourseName, validateInstitute, validateLocation, validateQualification } from "../components/validation";
 	
     // Function for open and close accordion
     const handleClick = () => open = !open;
 
-    export let education = [{ qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}]
+    export let educationDetails={};
+    export let { education } = educationDetails;
+   
+    education = [{ qualification: educationDetails?.qualification || '', 
+                            course_name: educationDetails?.course_name || '', 
+                            institute_name: educationDetails?.institute_name || '', 
+                            location: educationDetails?.location || '', 
+                            academic_year_start: educationDetails?.academic_year_start || '', 
+                            academic_year_end: educationDetails?.academic_year_end || ''
+                            }]
+                        
+
+   
+
+    // export let education = [{ qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}]
     
     // Function for adding additional educational details
     function addEducation() {
@@ -22,6 +36,7 @@
         education = education.filter((_, i) => i !== index);
       }
     }
+    
 </script>
 <!-- Accordion content -->
 <div class="content-box">
@@ -63,9 +78,9 @@
     </div>
     <!-- Buttons for adding or removing more than one education details -->
     <div class="education-buttons">
-        <button on:click|preventDefault={addEducation}>+ Add</button>
+        <button on:click|preventDefault={addEducation}>Add New Qualification</button>
         {#if i !== 0}
-            <button on:click|preventDefault={() => removeEducation(i)}>- Remove</button>
+            <button on:click|preventDefault={() => removeEducation(i)}>Remove Qualification</button>
         {/if}
     </div>
     {/each}
@@ -86,14 +101,12 @@
         margin-top: 10px;
    }
    .education-buttons button{
-        width: 82px;
+        width: 179px;
         background-color: white;
         color: #209FA4;;
         border-radius: 5px;
         /* border-color: white; */
         cursor: pointer;
-        font-family: ui-serif;
-        margin-left: 7px;
    }
    .content-box{
         border: 1px solid white;

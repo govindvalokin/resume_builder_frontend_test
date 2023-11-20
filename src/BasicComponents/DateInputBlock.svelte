@@ -36,25 +36,13 @@
     label {
         padding-left: 12px;
         padding-top: 10px;
+        font-family: initial;
     }
     .input-entry {
         width: 80%;
         height: 43px;
     }
-    /* input[type="text"] {
-        width: 100%;
-        height: 38px;
-        padding-left: 5px;
-        border-radius: 0px;
-        margin: 0px;
-    }
-    input[type="email"] {
-        width: 100%;
-        height: 38px;
-        padding-left: 5px;
-        border-radius: 0px;
-        margin: 0px;
-    } */
+    
     input[type="date"] {
         width: 50%;
         height: 38px;
@@ -62,6 +50,7 @@
         border-radius: 0px;
         margin: 0px;
         margin-left: 7px;
+        font-family: initial;
 
         outline: none;
         border:hidden;

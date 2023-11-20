@@ -1,12 +1,11 @@
 <script>
-    
-    import ListingTable from "./ListingTable.svelte";
-    // import NavBar from "./NavBar.svelte";
-
-
+//   import EditForm from "../../Edit/EditForm.svelte";
+//   import Test from "../../Edit/Test.svelte";
+  import ListingTable from "./ListingTable.svelte";
 </script>
+
 <main>
-    <!-- <NavBar/> -->
-    <ListingTable/>
-    
+  <ListingTable />
+  <!-- <Test /> -->
+  <!-- <EditForm /> -->
 </main>

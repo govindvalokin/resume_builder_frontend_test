@@ -1,8 +1,8 @@
 <script>
   import Icon from "@iconify/svelte";
   import dotsY from "@iconify/icons-pepicons-pop/dots-y";
-  import Button from "../../BasicComponents/Button.svelte";
-  // import DeleteBox from './DeleteBox.svelte';
+  
+ 
   import { onMount } from "svelte";
 
   import searchIcon from "@iconify/icons-material-symbols/search";
@@ -37,6 +37,7 @@
   });
 
   //Delete API
+  let deleteSuccessMessage = "";
   function apiDeleteFunction() {
     fetch(`http://127.0.0.1:8000/delete-data/${deleteId}`, {
       method: "DELETE",
@@ -45,6 +46,8 @@
       .then((data) => console.log(data));
     open = false;
     window.location.reload();
+    deleteSuccessMessage = "Successfully deleted";
+    window.scrollTo(0, 0);
   }
 
   //Search API
@@ -78,14 +81,22 @@
         <p>Are you sure want to delete?</p>
         <div class="confirm-buttons">
           <!-- svelte-ignore missing-declaration -->
-          <!-- <Button typeOfButton="save" type="submit" button_label="Delete"/> -->
+          
           <button class="delete" on:click={apiDeleteFunction}>Delete</button>
-          <!-- <input type="submit" class="delete" on:click={apiDeleteFunction} value="Delete"> -->
           <button class="cancel" on:click={handleDeleteBox}>Cancel</button>
         </div>
       </div>
     </div>
   {/if}
+  <!-- delete success message -->
+  {#if deleteSuccessMessage != ""}
+        <div class="alert-success">
+            <p class="success-message">{deleteSuccessMessage}</p>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <p class="close-button" on:click={() => (deleteSuccessMessage = "")} >&times;</p>
+        </div>
+  {/if}
+  <!-- nav-bar -->
   <div class="nav-bar">
     <h1>Resumes</h1>
     <hr />
@@ -97,11 +108,13 @@
           <Icon icon={searchIcon} width="20px" />
         </div>
       </div>
+      <!-- add new form button -->
       <div class="add-new">
         <a href="#/CreateForm">{add_new}</a>
       </div>
     </div>
   </div>
+  <!-- Listing table -->
   <table>
     <tr>
       <th>ID</th>
@@ -110,6 +123,7 @@
       <th>Phone</th>
       <th id="icon_heading" />
     </tr>
+    <!-- for search api call -->
     {#if searchData != null}
       <tr>
         <td>{searchData.id}</td>
@@ -123,9 +137,6 @@
           </div>
           {#if show_menu && selectedId === searchData.id}
             <div class="dropdown-content">
-              <!-- <a href="#">Edit</a> -->
-              <!-- <a href="#" on:click={handleDelete,}>Delete</a> -->
-
               <a
                 href="#"
                 on:click={() => {
@@ -139,14 +150,12 @@
                   handleDeleteBox(searchData.id);
                 }}>Delete</a
               >
-
-              <!-- <button id="edit_button">Edit</button>
-                        <button id="delete_button">Delete</button> -->
             </div>
           {/if}
         </td>
       </tr>
     {:else}
+    <!-- For list all resumes using API -->
       {#each Object.entries(data) as [Key, Value]}
         <tr>
           <td>{Value.id}</td>
@@ -160,15 +169,13 @@
             </div>
             {#if show_menu && selectedId === Value.id}
               <div class="dropdown-content">
-                <!-- <a href="#">Edit</a> -->
-                <!-- <a href="#" on:click={handleDelete,}>Delete</a> -->
-
                 <a
-                  href="#"
+                  href="#/EditForm?EditId={Value.id}"
                   on:click={() => {
                     show_menu = false;
                   }}>Edit</a
                 >
+                <!-- svelte-ignore a11y-invalid-attribute -->
                 <a
                   href="#"
                   on:click={() => {
@@ -176,9 +183,6 @@
                     handleDeleteBox(Value.id);
                   }}>Delete</a
                 >
-
-                <!-- <button id="edit_button">Edit</button>
-                            <button id="delete_button">Delete</button> -->
               </div>
             {/if}
           </td>
@@ -278,24 +282,6 @@
     margin: 10px 5px 10px 5px;
   }
 
-  /* #edit_button{
-    width: 61px;
-    height: 24px;
-    padding: 0px;
-    margin: 0px;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-}
-#delete_button{
-    width: 61px;
-    height: 24px;
-    padding: 0px;
-    margin: 0px;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-} */
 
   .delete {
     width: 100px;
@@ -353,5 +339,16 @@
   input[type="search"] {
     background-color: #e7ebef;
     border: 1px solid black;
+  }
+  .alert-success{
+        background-color: #a1e566;
+        display: flex;
+        padding: 5px;
+  }
+  .success-message{
+        margin: 0;
+        text-align: center;
+        color: rgb(62, 49, 177);
+        width: 95%;
   }
 </style>

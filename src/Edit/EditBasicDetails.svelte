@@ -2,7 +2,7 @@
     import InputBlock from "../BasicComponents/TextInputBlock.svelte";
     import EmailBlock from "../BasicComponents/EmailInputBlock.svelte";
     import UrlBlock from "../BasicComponents/UrlInputBlock.svelte";
-    import {validatePhone, validateEmail, validateUrl, validateName, validateSummary} from "./validation"
+    import {validatePhone, validateEmail, validateUrl, validateName, validateSummary} from "../components/validation"
     
 
     import Icon from "@iconify/svelte";
@@ -13,11 +13,21 @@
     // Function for handling accordion
     const handleClick = () => (open = !open);
 
+
+    // export let basicDetails;
+    // export let email = basicDetails?.email || "";
+    // export let phone = basicDetails?.phone || "";
+    // export let image_url = basicDetails?.image_url || "";
+    // export let summary = basicDetails?.summary || "";
+    // export let name = basicDetails?.name || "";
+
     export let name = "";
     export let email = "";
     export let phone = "";
     export let image_url = "";
     export let summary = "";
+
+    
    
 </script>
 
@@ -49,12 +59,14 @@
 
         <!-- Accordion Content -->
         {#if open}
+        
             <div class="active" transition:slide>
                 <InputBlock
                     placeholder="Add Name"
                     id="name"
                     label="Name"
                     bind:value={name}
+                    
                 />
                 <!-- Error message display block -->
                 <div class="errors">{name && validateName(name)}</div>
@@ -85,11 +97,12 @@
                 <InputBlock
                     placeholder="Add Summary"
                     id="summary"
-                    label="Summary"
+                    label="summary"
                     bind:value={summary}
                 />
                 <!-- Error message display block -->
                 <div class="errors">{summary && validateSummary(summary)}</div>
+                
             </div>
         {/if}
     </div>

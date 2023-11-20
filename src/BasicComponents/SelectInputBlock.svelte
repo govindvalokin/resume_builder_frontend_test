@@ -45,6 +45,7 @@
     label {
         padding-left: 12px;
         padding-top: 10px;
+        font-family: initial;
     }
     .input-entry {
         width: 80%;
@@ -59,6 +60,7 @@
         background-color: white;
         margin-left: 7px;
         border: none;
+        font-family: initial;
 
         outline: none;
         border:hidden;

@@ -21,7 +21,7 @@
     .cancel{
         width: 100px;
         background-color: white;
-        color: black;
+        color: #209FA4;
         border-radius: 5px;
         margin: 10px 5px 10px 5px;
     }

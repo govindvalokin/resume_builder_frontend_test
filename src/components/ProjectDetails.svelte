@@ -42,15 +42,15 @@
     {#each project as project_data, i}
     <div class="active" transition:slide>
         <InputBlock placeholder = "Add Project Title" id = "project-title" label = "Project Title" bind:value={project_data.project_title} />
-        <InputBlock placeholder = "Add Skills" id = "skills" label = "Skills" bind:value={project_data.skills_earned}/>
-        <InputBlock placeholder = "Add Description" id = "description" label = "Descriptoion" bind:value={project_data.description}/>
+        <InputBlock placeholder = "Add Skills" id = "skills" label = "Earned Skills" bind:value={project_data.skills_earned}/>
+        <InputBlock placeholder = "Add Description" id = "description" label = "Description" bind:value={project_data.description}/>
     </div>
 
     <!-- Buttons for adding new projects and removing projects -->
     <div class="project-buttons">
-        <button on:click|preventDefault={addProject}>Add New Project</button>
+        <button on:click|preventDefault={addProject}>+ Add</button>
         {#if i !== 0}
-            <button on:click|preventDefault={() => removeProject(i)}>Remove Project</button>
+            <button on:click|preventDefault={() => removeProject(i)}>- Remove</button>
         {/if}
     </div>
     {/each}
@@ -70,12 +70,14 @@
         margin-top: 10px;
    }
    .project-buttons button{
-        width: 137px;
+        width: 82px;
         background-color: white;
-        color: blue;
+        color: #209FA4;;
         border-radius: 5px;
-        border-color: white;
+        /* border-color: white; */
         cursor: pointer;
+        font-family: ui-serif;
+        margin-left: 7px;
    }
    .content-box{
         border: 1px solid white;
