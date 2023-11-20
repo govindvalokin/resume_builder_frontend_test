@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
 
   import searchIcon from "@iconify/icons-material-symbols/search";
+  import SelectInputBlock from "../../BasicComponents/SelectInputBlock.svelte";
   export let add_new = "+ Add New Resume";
 
   //To handle delete confirmation box
@@ -24,6 +25,19 @@
     show_menu = !show_menu;
     selectedId = id;
   }
+
+  //Filter
+  export let options = [
+        "India",
+        "Canada",
+        "United Kingdom",
+        "United States",
+        "Australia",
+        "China",
+        "Qatar",
+    ];
+  export let selectValue="";
+  export let default_value='All';
 
   //API get operation
 
@@ -69,6 +83,26 @@
       searchData = null;
     }
   }
+
+  //Filter API
+  export let filterData = "";
+  async function apiFilterResumeByCountry(){
+    if (selectValue != ""){
+      const response = await fetch(`http://127.0.0.1:8000/filter-resumes/${selectValue}`,
+      {
+        method: "GET",
+      }
+      );
+      const data = await response.json();
+      console.log(data);
+      filterData = data;
+      
+    }
+    else {
+      // console.error(error);
+      searchData = null;
+    }
+  }
 </script>
 
 <main>
@@ -108,9 +142,21 @@
           <Icon icon={searchIcon} width="20px" />
         </div>
       </div>
-      <!-- <div class="country-filter">
+<!-- Country Filter -->
+      <div class="country-filter">
+        <!-- Select input box -->
+        <div class="input-entry">
+          <select bind:value={selectValue} on:change={apiFilterResumeByCountry(selectValue)}>
+              <option value="">{default_value}</option> 
+              {#each options as option}
+                  <option value={option}>{option}</option>
+              {/each}
+          </select>
+      </div>
+      </div>
+<!-- Sort Option       -->
+      
 
-      </div> -->
       <!-- add new form button -->
       <div class="add-new">
         <a href="#/CreateForm">{add_new}</a>
@@ -157,6 +203,39 @@
           {/if}
         </td>
       </tr>
+    <!-- Filter data   -->
+    {:else if selectValue != ""}
+    {#each Object.entries(filterData) as [Key, Value]}
+    <tr>
+      <td>{Value.id}</td>
+      <td>{Value.name}</td>
+      <td>{Value.email}</td>
+      <td>{Value.phone}</td>
+      <td id="icon_column">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="icon-container" on:click={toggleMenu(Value.id)}>
+          <Icon icon={dotsY} />
+        </div>
+        {#if show_menu && selectedId === Value.id}
+          <div class="dropdown-content">
+            <a
+              href="#"
+              on:click={() => {
+                show_menu = false;
+              }}>Edit</a
+            >
+            <a
+              href="#"
+              on:click={() => {
+                show_menu = false;
+                handleDeleteBox(Value.id);
+              }}>Delete</a
+            >
+          </div>
+        {/if}
+      </td>
+    </tr>
+    {/each}
     {:else}
     <!-- For list all resumes using API -->
       {#each Object.entries(data) as [Key, Value]}
@@ -354,4 +433,12 @@
         color: rgb(62, 49, 177);
         width: 95%;
   }
+  .country-filter{
+    width: 300px;
+  }
+  select option:first-child{
+        /* display: none; */
+        
+    }
+  
 </style>
