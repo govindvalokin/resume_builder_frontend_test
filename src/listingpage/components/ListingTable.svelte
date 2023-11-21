@@ -39,16 +39,61 @@
   export let selectValue="";
   export let default_value='All';
 
+
+
+  //Sort
+  export let sortOptions = [
+        "name",
+        "id"        
+    ];
+  export let selectSortValue="";
+  // export let sortedData = [];
+  // function sorting(data){
+  //   if (selectSortValue === "name") {
+  //     sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  //   } else if (selectSortValue === "id") {
+  //     sortedData = [...data].sort((a, b) => a.id - b.id);
+  //   } else {
+  //     sortedData = data;
+  //   }
+  // }
+
+
+
   //API get operation
 
   //GET api for fetching all resumes
-  let data = [];
-  onMount(async () => {
-    const response = await fetch("http://127.0.0.1:8000/resumes");
-    const parsedData = await response.json();
-    data = parsedData;
-    console.log(data);
-  });
+  // let data = [];
+  // onMount(async () => {
+  //   const response = await fetch("http://127.0.0.1:8000/resumes");
+  //   const parsedData = await response.json();
+  //   data = parsedData;
+  //   console.log(data);
+      
+  // });
+
+  //trials
+  // GET api for fetching all resumes
+    let data = [];
+    async function getAllResumes(selectSortValue){
+      const response = await fetch("http://127.0.0.1:8000/resumes");
+      const parsedData = await response.json();
+      console.log(parsedData);
+      
+
+      const dataArray = Object.values(parsedData);
+
+      if (selectSortValue === "name") {
+        data = dataArray.sort((a, b) => a.name.localeCompare(b.name));
+        console.log(dataArray);
+      } else if (selectSortValue === "id") {
+        data = dataArray.sort((a, b) => a.id - b.id);
+      } else {
+        data = dataArray;
+      }
+    }
+    onMount(getAllResumes)
+
 
   //Delete API
   let deleteSuccessMessage = "";
@@ -95,7 +140,19 @@
       );
       const data = await response.json();
       console.log(data);
-      filterData = data;
+      // filterData = data;
+
+      const dataArray = Object.values(data);
+
+      if (selectSortValue === "name") {
+        filterData = dataArray.sort((a, b) => a.name.localeCompare(b.name));
+        console.log(dataArray);
+      } else if (selectSortValue === "id") {
+        filterData = dataArray.sort((a, b) => a.id - b.id);
+      } else {
+        filterData = dataArray;
+      }
+
       
     }
     else {
@@ -142,20 +199,34 @@
           <Icon icon={searchIcon} width="20px" />
         </div>
       </div>
+      <div class="sort-and-filter">
 <!-- Country Filter -->
-      <div class="country-filter">
-        <!-- Select input box -->
-        <div class="input-entry">
-          <select bind:value={selectValue} on:change={apiFilterResumeByCountry(selectValue)}>
-              <option value="">{default_value}</option> 
-              {#each options as option}
-                  <option value={option}>{option}</option>
-              {/each}
-          </select>
+        <div class="country-filter">
+          <!-- Select input box -->
+          <div class="input-entry">
+            <select bind:value={selectValue} on:change={apiFilterResumeByCountry(selectValue)}>
+                <option value="">{default_value}</option> 
+                {#each options as option}
+                    <option value={option}>{option}</option>
+                {/each}
+            </select>
+        </div>
+        </div>
+<!-- Sort Options       -->
+        <div class="sort">
+          <!-- Select input box -->
+          <div class="input-entry">
+            <select bind:value={selectSortValue} on:change={() => {getAllResumes(selectSortValue); apiFilterResumeByCountry();}}>
+                <option value="">Sort by</option>
+                <option value="">None</option> 
+                {#each sortOptions as sortOption}
+                    <option value={sortOption}>{sortOption}</option>
+                {/each}
+            </select>
+        </div>
+        </div>
       </div>
-      </div>
-<!-- Sort Option       -->
-      
+
 
       <!-- add new form button -->
       <div class="add-new">
@@ -434,11 +505,21 @@
         width: 95%;
   }
   .country-filter{
-    width: 300px;
+    width: 160px;
+    /* margin-left: 350px; */
   }
-  select option:first-child{
-        /* display: none; */
+ 
+  .sort{
+    width: 160px;
+  }
+  .sort select{
+    width: 160px;
+  }
+  .sort-and-filter{
+    display: flex;
+  }
+  .sort select option:first-child{
+      display: none;
         
     }
-  
 </style>
