@@ -2,6 +2,7 @@
     import InputBlock from "../BasicComponents/TextInputBlock.svelte";
     import DateBlock from "../BasicComponents/DateInputBlock.svelte";
     import Icon from '@iconify/svelte';
+    
 
     export let open = false;
     import { slide } from 'svelte/transition';
@@ -10,32 +11,20 @@
     // Function for open and close accordion
     const handleClick = () => open = !open;
 
-    export let educationDetails={};
-    export let { education } = educationDetails;
+       
+    export let educationList=[];
+    $: educationArray = Array.isArray(educationList) ? educationList : [educationList];
    
-    education = [{ qualification: educationDetails?.qualification || '', 
-                            course_name: educationDetails?.course_name || '', 
-                            institute_name: educationDetails?.institute_name || '', 
-                            location: educationDetails?.location || '', 
-                            academic_year_start: educationDetails?.academic_year_start || '', 
-                            academic_year_end: educationDetails?.academic_year_end || ''
-                            }]
-                        
-
-   
-
-    // export let education = [{ qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}]
-    
     // Function for adding additional educational details
-    function addEducation() {
-      education = [...education, { qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}];
-    }
-    // Function for removing additional education details
-    function removeEducation(index) {
-      if (education.length > 1) {
-        education = education.filter((_, i) => i !== index);
-      }
-    }
+    // function addEducation() {
+    //   education = [...education, { qualification:'', course_name:'', institute_name:'', location:'', academic_year_start:'', academic_year_end:''}];
+    // }
+    // // Function for removing additional education details
+    // function removeEducation(index) {
+    //   if (education.length > 1) {
+    //     education = education.filter((_, i) => i !== index);
+    //   }
+    // }
     
 </script>
 <!-- Accordion content -->
@@ -53,23 +42,22 @@
         </div>
     </div>
     {#if open}
-    {#each education as education_data, i}
+    {#each educationArray as education_data, i}
     <div class="active" transition:slide>
         <InputBlock placeholder = "Add Qualification" id = "qualification" label = "Qualification" bind:value={education_data.qualification}/>
         <!-- Error message display block -->
-
         <div class="errors">{education_data.qualification && validateQualification(education_data.qualification)}</div>
+        
         <InputBlock placeholder = "Add Course Name" id = "course-name" label = "Course Name" bind:value={education_data.course_name} />
         <!-- Error message display block -->
-
         <div class="errors">{education_data.course_name && validateCourseName(education_data.course_name)}</div>
+        
         <InputBlock placeholder = "Add Institute" id = "institute" label = "Institute" bind:value={education_data.institute_name} />
         <!-- Error message display block -->
-
         <div class="errors">{education_data.institute_name && validateInstitute(education_data.institute_name)}</div>
+        
         <InputBlock placeholder = "Add Location" id = "location" label = "Location" bind:value={education_data.location} />
         <!-- Error message display block -->
-
         <div class="errors">{education_data.location && validateLocation(education_data.location)}</div>
 
         <!-- Date input blocks without validations -->
@@ -77,12 +65,12 @@
         <DateBlock  id = "academic_year_end" label = "Academic Year End" bind:value={education_data.academic_year_end} />	
     </div>
     <!-- Buttons for adding or removing more than one education details -->
-    <div class="education-buttons">
+    <!-- <div class="education-buttons">
         <button on:click|preventDefault={addEducation}>Add New Qualification</button>
         {#if i !== 0}
             <button on:click|preventDefault={() => removeEducation(i)}>Remove Qualification</button>
         {/if}
-    </div>
+    </div> -->
     {/each}
     {/if}
 </div>

@@ -5,11 +5,7 @@ import EditAddressDetails from "./EditAddressDetails.svelte";
 import EditBasicDetails from "./EditBasicDetails.svelte";
   import EditEducation from "./EditEducation.svelte";
 
-//   export let name;
-//   export let email;
-//   export let phone;
-//   export let image_url;
-//   export let summary;
+
 
 export let EditId;
 import { onMount } from 'svelte';
@@ -46,7 +42,11 @@ onMount(() => {
   //get api for single user
   export let addressDetails;
   export let basicDetails;
-  export let educationDetails = {};
+  export let educationList;
+  // export let educationDetails ={};
+
+  
+
   export let Id;
   async function apiSearchResumeById(Id) {
     if (Id != "") {
@@ -57,28 +57,37 @@ onMount(() => {
         }
       );
       const data = await response.json();
-    //   console.log(data);
+      console.log(data);
       addressDetails = data.location_details;
       basicDetails = data.basic_details
-      educationDetails = data.education
-      console.log(educationDetails)
+      educationList = data.education
+      // educationDetails = data.education[0]
+
+     
+
+      // console.log(educationDetails)
+      console.log(basicDetails)
       
     } else {
       console.error(error);
       searchDataById = null;
     }
   }
-
+// function printing(para){
+//   console.log(para)
+// }
 </script>
 <main>
   <h1>Edit Resume Details</h1>
    <EditBasicDetails {...basicDetails}/> 
    <EditAddressDetails {...addressDetails} />
-   <EditEducation {...educationDetails} />
+   <EditEducation {educationList}/>
    
-   <!-- <button on:click={apiSearchResumeByEmail}>submit</button> -->
+  
+  
    <input type="text" bind:value={Id}>
    <button on:click={() => apiSearchResumeById(Id)}>submit</button>
+  
 </main>
 <style>
 
