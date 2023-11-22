@@ -57,32 +57,9 @@
         "id"        
     ];
   export let selectSortValue="";
-  // export let sortedData = [];
-  // function sorting(data){
-  //   if (selectSortValue === "name") {
-  //     sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-  //   } else if (selectSortValue === "id") {
-  //     sortedData = [...data].sort((a, b) => a.id - b.id);
-  //   } else {
-  //     sortedData = data;
-  //   }
-  // }
+  
 
-
-
-  //API get operation
-
-  //GET api for fetching all resumes
-  // let data = [];
-  // onMount(async () => {
-  //   const response = await fetch("http://127.0.0.1:8000/resumes");
-  //   const parsedData = await response.json();
-  //   data = parsedData;
-  //   console.log(data);
-      
-  // });
-
-  //trials
+  
   // GET api for fetching all resumes
     let data = [];
     async function getAllResumes(selectSortValue){
@@ -120,7 +97,7 @@
   }
 
 
-  // search all api
+  // Search API
   export let email;
   export let searchData=null;
   async function apiSearchResumeByEmail(email) {
@@ -256,6 +233,7 @@
     </tr>
     <!-- for search api call -->
     
+    <!-- Search API -->
     {#if searchData != null}
       {#each Object.entries(searchData) as [Key, value]}
         <tr>
@@ -265,6 +243,7 @@
           <td>{value.phone}</td>
           <td id="icon_column">
             
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="icon-container" on:click={toggleMenu(value.id)}>
               <Icon icon={dotsY} />
             </div>

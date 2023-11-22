@@ -7,6 +7,7 @@
   import Skills from "../components/Skills.svelte";
   import SocialMedia from "../components/SocialMedia.svelte";
   import { prevent_default } from "svelte/internal";
+  import Button from "../BasicComponents/Button.svelte";
   // Importing validation functions
   import {
     validateEmail, validateName, validatePhone, validateUrl, validateSummary,
@@ -210,8 +211,11 @@ function clearForm() {
   </div>
 {/if}
 <form id="update_form">
-    <a href="#/">{backward_link}</a>
-    <h2>Edit Resume Details</h2>
+    <div class="form-heading">
+        <a href="#/">{backward_link}</a>
+        <h2>Edit Resume Details</h2>
+    </div>
+    
     <BasicDetails bind:name bind:email bind:phone bind:summary bind:image_url />
     <Address bind:address bind:street bind:city bind:pincode bind:country />
     <Education bind:education />
@@ -221,12 +225,11 @@ function clearForm() {
     <SocialMedia bind:social_media />
 
     <div class="update-buttons">
+      <a href="#/"><Button typeOfButton="cancel" button_label="cancel" type="button"/></a>
       <button type="button" id="update_button" on:click={handleUpdate}>Update</button>
     </div>
 </form>
-  <!-- <input type="text" bind:value={Id}> -->
-  <!-- <button on:click={() => apiSearchResumeById}>submit</button> -->
-  
+ 
 </main>
 
 <style>
@@ -245,14 +248,14 @@ function clearForm() {
   }
 
 
-  /* .form-heading {
+  .form-heading {
     width: 100%;
     height: auto;
     background-color: #e7ebef;
 
     padding-top: 8px;
     padding-left: 4px;
-  } */
+  }
   h2 {
     margin: 0;
     padding-top: 6px;
