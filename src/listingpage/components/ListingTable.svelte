@@ -119,13 +119,14 @@
     window.scrollTo(0, 0);
   }
 
-  //Search API
+
+  // search all api
   export let email;
-  export let searchData;
+  export let searchData=null;
   async function apiSearchResumeByEmail(email) {
     if (email.trim() != "") {
       const response = await fetch(
-        `http://127.0.0.1:8000/search-resume/${email}`,
+        `http://127.0.0.1:8000/search-resume-all/${email}`,
         {
           method: "GET",
         }
@@ -254,36 +255,39 @@
       <th id="icon_heading" />
     </tr>
     <!-- for search api call -->
+    
     {#if searchData != null}
-      <tr>
-        <td>{searchData.id}</td>
-        <td>{searchData.name}</td>
-        <td>{searchData.email}</td>
-        <td>{searchData.phone}</td>
-        <td id="icon_column">
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <div class="icon-container" on:click={toggleMenu(searchData.id)}>
-            <Icon icon={dotsY} />
-          </div>
-          {#if show_menu && selectedId === searchData.id}
-            <div class="dropdown-content">
-              <a
-                href="#"
-                on:click={() => {
-                  show_menu = false;
-                }}>Edit</a
-              >
-              <a
-                href="#"
-                on:click={() => {
-                  show_menu = false;
-                  handleDeleteBox(searchData.id);
-                }}>Delete</a
-              >
+      {#each Object.entries(searchData) as [Key, value]}
+        <tr>
+          <td>{value.id}</td>
+          <td>{value.name}</td>
+          <td>{value.email}</td>
+          <td>{value.phone}</td>
+          <td id="icon_column">
+            
+            <div class="icon-container" on:click={toggleMenu(value.id)}>
+              <Icon icon={dotsY} />
             </div>
-          {/if}
-        </td>
-      </tr>
+            {#if show_menu && selectedId === value.id}
+              <div class="dropdown-content">
+                <a
+                  href="#"
+                  on:click={() => {
+                    show_menu = false;
+                  }}>Edit</a
+                >
+                <a
+                  href="#"
+                  on:click={() => {
+                    show_menu = false;
+                    handleDeleteBox(value.id);
+                  }}>Delete</a
+                >
+              </div>
+            {/if}
+          </td>
+        </tr>
+      {/each}    
     <!-- Filter data   -->
     {:else if selectValue != ""}
     {#each Object.entries(filterData) as [Key, Value]}
