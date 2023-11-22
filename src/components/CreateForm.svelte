@@ -188,7 +188,7 @@
       } catch (error) {
         // console.error("Error:", error);
         console.log(error);
-        backendErrorMessage = "Something went wrong. Can't subit the form!!";
+        backendErrorMessage = "Something went wrong. Can't submit the form!!";
         window.scrollTo(0, 0);
       }
       console.log(form_data);

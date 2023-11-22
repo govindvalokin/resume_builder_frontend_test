@@ -26,6 +26,16 @@
     selectedId = id;
   }
 
+  export let editId = "";
+  //Function to pass individual id to edit page
+  function passEditId(id){
+    editId = id;
+    window.history.pushState({editId}, null, "#/EditResumeForm");
+    document.location.reload();
+    dispatchEvent(new Event('popstate'))
+
+  }
+
   //Filter
   export let options = [
         "India",
@@ -323,9 +333,9 @@
             {#if show_menu && selectedId === Value.id}
               <div class="dropdown-content">
                 <a
-                  href="#/EditForm?EditId={Value.id}"
+                  href="#/EditResumeForm"
                   on:click={() => {
-                    show_menu = false;
+                    show_menu = false; passEditId(Value.id);
                   }}>Edit</a
                 >
                 <!-- svelte-ignore a11y-invalid-attribute -->
