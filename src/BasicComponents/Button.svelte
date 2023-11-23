@@ -6,7 +6,9 @@
 </script>
 <!-- Button -->
 <main>
+
     <button class={typeOfButton} type={type}>{button_label}</button>
+
 </main>
 <style>
     /* Button styles  */
@@ -25,4 +27,17 @@
         border-radius: 5px;
         margin: 10px 5px 10px 5px;
     }
+    @media (max-width:480px){
+        .save{
+            width:97%;
+            height: 50px
+        }
+        .cancel{
+            margin-bottom: 0px;
+            width: 97%;
+            height: 50px;
+        }
+    }
+    
+    
 </style>

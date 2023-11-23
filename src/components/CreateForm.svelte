@@ -296,4 +296,16 @@
     display: flex;
     padding: 5px;
   }
+
+  /* For mobile view */
+  @media (max-width: 480px){
+    h2{
+      text-align: center;
+    }
+    .submission-buttons{
+      display: flex;
+      flex-direction: column;
+    }
+    
+  }
 </style>

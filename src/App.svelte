@@ -1,23 +1,19 @@
 <script>
-    import EditForm from "./Edit/EditForm.svelte";
-    import CreateForm from "./components/CreateForm.svelte";
-    import ListingPage from "./listingpage/components/ListingPage.svelte";
-    import Router from "svelte-spa-router"
-    import EditResumeForm from "./Edit/EditResumeForm.svelte";
+  import CreateForm from "./components/CreateForm.svelte";
+  import ListingPage from "./listingpage/components/ListingPage.svelte";
+  import Router from "svelte-spa-router";
+  import EditResumeForm from "./Edit/EditResumeForm.svelte";
 
-    let routes = {
-        "/": ListingPage,
-        "/CreateForm": CreateForm,
-        "/EditResumeForm" : EditResumeForm,
+  let routes = {
+    "/": ListingPage,
+    "/CreateForm": CreateForm,
+    "/EditResumeForm": EditResumeForm,
 
-        // "*": NotFound
-    }
-    
+    // "*": NotFound
+  };
 </script>
 
-	
-    <Router {routes}/>
-    
+<Router {routes} />
+
 <style>
-	
 </style>

@@ -59,4 +59,24 @@
     outline: none;
   }
 
+
+ /* For mobile view */
+@media (max-width: 480px){
+  .label {
+    display: none;
+  }
+  input[type="text"] {
+    width:100%;
+    font-size: larger;
+    width:97%;
+  }
+  .input-entry {
+    width: 100%;
+    
+  }
+  label{
+    display: none;
+  }
+
+  }
 </style>

@@ -295,4 +295,20 @@ function clearForm() {
     display: flex;
     padding: 5px;
   }
+
+  /* For mobile view */
+  @media (max-width: 480px){
+    h2{
+      text-align: center;
+    }
+    .update-buttons{
+      display: flex;
+      flex-direction: column;
+    }
+    #update_button{
+        width: 97%;
+        height: 50px;
+    }
+    
+  }
 </style>
