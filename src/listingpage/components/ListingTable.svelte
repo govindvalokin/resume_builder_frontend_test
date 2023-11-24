@@ -1,8 +1,6 @@
 <script>
   import Icon from "@iconify/svelte";
   import dotsY from "@iconify/icons-pepicons-pop/dots-y";
-  
- 
   import { onMount } from "svelte";
 
   import searchIcon from "@iconify/icons-material-symbols/search";
@@ -193,6 +191,7 @@
           <!-- Select input box -->
           <div class="input-entry">
             <select bind:value={selectValue} on:change={apiFilterResumeByCountry(selectValue)}>
+                <option value="" id="country_filter_first_option">Filter</option>
                 <option value="">{default_value}</option> 
                 {#each options as option}
                     <option value={option}>{option}</option>
@@ -249,19 +248,15 @@
             </div>
             {#if show_menu && selectedId === value.id}
               <div class="dropdown-content">
+                <a href="#/EditResumeForm" on:click={() => {
+                    show_menu = false; passEditId(value.id);
+                  }}>Edit</a>
+                <!-- svelte-ignore a11y-invalid-attribute -->
                 <a
-                  href="#"
-                  on:click={() => {
-                    show_menu = false;
-                  }}>Edit</a
-                >
-                <a
-                  href="#"
-                  on:click={() => {
+                  href="#" on:click={() => {
                     show_menu = false;
                     handleDeleteBox(value.id);
-                  }}>Delete</a
-                >
+                  }}>Delete</a>
               </div>
             {/if}
           </td>
@@ -282,19 +277,14 @@
         </div>
         {#if show_menu && selectedId === Value.id}
           <div class="dropdown-content">
-            <a
-              href="#"
-              on:click={() => {
-                show_menu = false;
-              }}>Edit</a
-            >
-            <a
-              href="#"
-              on:click={() => {
+            <a href="#/EditResumeForm" on:click={() => {
+                show_menu = false; passEditId(Value.id);
+              }}>Edit</a>
+            <!-- svelte-ignore a11y-invalid-attribute -->
+            <a href="#" on:click={() => {
                 show_menu = false;
                 handleDeleteBox(Value.id);
-              }}>Delete</a
-            >
+              }}>Delete</a>
           </div>
         {/if}
       </td>
@@ -315,20 +305,14 @@
             </div>
             {#if show_menu && selectedId === Value.id}
               <div class="dropdown-content">
-                <a
-                  href="#/EditResumeForm"
-                  on:click={() => {
+                <a href="#/EditResumeForm" on:click={() => {
                     show_menu = false; passEditId(Value.id);
-                  }}>Edit</a
-                >
+                  }}>Edit</a>
                 <!-- svelte-ignore a11y-invalid-attribute -->
-                <a
-                  href="#"
-                  on:click={() => {
+                <a href="#" on:click={() => {
                     show_menu = false;
                     handleDeleteBox(Value.id);
-                  }}>Delete</a
-                >
+                  }}>Delete</a>
               </div>
             {/if}
           </td>
@@ -515,4 +499,7 @@
       display: none;
         
     }
+  #country_filter_first_option{
+    display: none;
+  }
 </style>

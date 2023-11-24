@@ -20,7 +20,7 @@
     // Function for removing additional social media fields
     function removeSocialMedia(index) {
         if (social_media.length > 1) {
-            social_media = social_media.filter((_, i) => i !== index);
+            social_media = social_media.filter((_, item) => item !== index);
         }
     }
 
@@ -41,7 +41,7 @@
     </div>
     <!-- Accordion content -->
     {#if open}
-        {#each social_media as social_media_data, i}
+        {#each social_media as social_media_data, item}
             <div class="active" transition:slide>
                 <InputBlock
                     placeholder="Add Network"
@@ -67,8 +67,8 @@
                 <button on:click|preventDefault={addSocialData}
                     >+ Add</button
                 >
-                {#if i !== 0}
-                    <button on:click|preventDefault={() => removeSocialMedia(i)}
+                {#if item !== 0}
+                    <button on:click|preventDefault={() => removeSocialMedia(item)}
                         >- Remove</button
                     >
                 {/if}

@@ -116,17 +116,15 @@
     let pincodeCheck = validatePincode(pincode);
     let countryCheck = validateCountry(country);
     let educationErrors = [];
-    for (let i = 0; i < education.length; i++) {
-      let qualificationCheck = validateQualification(
-        education[i].qualification
-      );
-      let courseNameCheck = validateCourseName(education[i].course_name);
-      let instituteCheck = validateInstitute(education[i].institute_name);
-      let locationCheck = validateLocation(education[i].location);
+    for (let item = 0; item < education.length; item++) {
+      let qualificationCheck = validateQualification(education[item].qualification);
+      let courseNameCheck = validateCourseName(education[item].course_name);
+      let instituteCheck = validateInstitute(education[item].institute_name);
+      let locationCheck = validateLocation(education[item].location);
       if (qualificationCheck != "" || courseNameCheck != "" || instituteCheck != "" || locationCheck != "")
         {
             educationErrors.push({
-            index: i,
+            index: item,
             qualificationError: qualificationCheck,
             courseNameError: courseNameCheck,
             instituteError: instituteCheck,
@@ -225,7 +223,7 @@ function clearForm() {
     <SocialMedia bind:social_media />
 
     <div class="update-buttons">
-      <a href="#/"><Button typeOfButton="cancel" button_label="cancel" type="button"/></a>
+      <a href="#/"><Button typeOfButton="cancel" button_label="Cancel" type="button"/></a>
       <button type="button" id="update_button" on:click={handleUpdate}>Update</button>
     </div>
 </form>
@@ -307,7 +305,8 @@ function clearForm() {
     }
     #update_button{
         width: 97%;
-        height: 50px;
+        height: 40px;
+        font-size: larger;
     }
     
   }

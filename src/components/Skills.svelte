@@ -19,7 +19,7 @@
     // Function for removing additional skills
     function removeSkill(index) {
       if (skills.length > 1) {
-        skills = skills.filter((_, i) => i !== index);
+        skills = skills.filter((_, item) => item !== index);
       }
     }
 </script>
@@ -38,7 +38,7 @@
     </div>
     <!-- Accordion content -->
     {#if open}
-    {#each skills as skill, i}
+    {#each skills as skill, item}
     <div class="active" transition:slide>
         <InputBlock placeholder = "Add Skill Name" id = "skill-name" label = "Skill Name" bind:value={skill.skill_name} />
         <SkillLevelSelectComponent label="Level" options={skill_options} bind:value={skill.level} default_value="Select Skill Level" />
@@ -46,8 +46,8 @@
     <!-- Buttons for adding or removing additional skill fields -->
     <div class="skill-buttons">
     <button on:click|preventDefault={addSkill}>+ Add</button>
-    {#if i !== 0}
-        <button on:click|preventDefault={() => removeSkill(i)}>- Remove</button>
+    {#if item !== 0}
+        <button on:click|preventDefault={() => removeSkill(item)}>- Remove</button>
     {/if}
     </div>
     {/each}

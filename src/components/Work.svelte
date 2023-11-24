@@ -16,7 +16,7 @@
     // Function for removing additional work fields
     function removeWork(index) {
       if (work.length > 1) {
-        work = work.filter((_, i) => i !== index);
+        work = work.filter((_, item) => item !== index);
       }
     }
 
@@ -36,7 +36,7 @@
     </div>
     <!-- Accordion content -->
     {#if open}
-    {#each work as work_data, i}
+    {#each work as work_data, item}
         <div class="active" transition:slide>
             <InputBlock
                 placeholder="Add Organisation"
@@ -78,8 +78,8 @@
         <!-- Buttons for adding or removing additional work fields -->
         <div class="work-buttons">
             <button on:click|preventDefault={addWork}>+ Add</button>
-            {#if i !== 0}
-                <button on:click|preventDefault={() => removeWork(i)}>- Remove</button>
+            {#if item !== 0}
+                <button on:click|preventDefault={() => removeWork(item)}>- Remove</button>
             {/if}
         </div>
     {/each}

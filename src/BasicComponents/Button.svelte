@@ -18,6 +18,7 @@
         color: white;
         border-radius: 5px;
         margin: 10px 5px 10px 5px;
+        
 
     }
     .cancel{
@@ -26,16 +27,19 @@
         color: #209FA4;
         border-radius: 5px;
         margin: 10px 5px 10px 5px;
+        
     }
     @media (max-width:480px){
         .save{
             width:97%;
-            height: 50px
+            height: 40px;
+            font-size: larger;
         }
         .cancel{
             margin-bottom: 0px;
             width: 97%;
-            height: 50px;
+            height: 40px;
+            font-size: larger;
         }
     }
     

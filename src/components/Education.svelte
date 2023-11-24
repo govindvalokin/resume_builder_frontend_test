@@ -19,7 +19,7 @@
     // Function for removing additional education details
     function removeEducation(index) {
       if (education.length > 1) {
-        education = education.filter((_, i) => i !== index);
+        education = education.filter((_, item) => item !== index);
       }
     }
 </script>
@@ -38,7 +38,7 @@
         </div>
     </div>
     {#if open}
-    {#each education as education_data, i}
+    {#each education as education_data, item}
     <div class="active" transition:slide>
         <InputBlock placeholder = "Add Qualification" id = "qualification" label = "Qualification" bind:value={education_data.qualification}/>
         <!-- Error message display block -->
@@ -64,8 +64,8 @@
     <!-- Buttons for adding or removing more than one education details -->
     <div class="education-buttons">
         <button on:click|preventDefault={addEducation}>+ Add</button>
-        {#if i !== 0}
-            <button on:click|preventDefault={() => removeEducation(i)}>- Remove</button>
+        {#if item !== 0}
+            <button on:click|preventDefault={() => removeEducation(item)}>- Remove</button>
         {/if}
     </div>
     {/each}

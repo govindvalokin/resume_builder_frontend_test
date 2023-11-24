@@ -18,7 +18,7 @@
     // Function for removing additional project details
     function removeProject(index) {
       if (project.length > 1) {
-        project = project.filter((_, i) => i !== index);
+        project = project.filter((_, item) => item !== index);
       }
     }
 
@@ -39,7 +39,7 @@
     </div>
     <!-- Accordion content -->
     {#if open}
-    {#each project as project_data, i}
+    {#each project as project_data, item}
     <div class="active" transition:slide>
         <InputBlock placeholder = "Add Project Title" id = "project-title" label = "Project Title" bind:value={project_data.project_title} />
         <InputBlock placeholder = "Add Skills" id = "skills" label = "Earned Skills" bind:value={project_data.skills_earned}/>
@@ -49,8 +49,8 @@
     <!-- Buttons for adding new projects and removing projects -->
     <div class="project-buttons">
         <button on:click|preventDefault={addProject}>+ Add</button>
-        {#if i !== 0}
-            <button on:click|preventDefault={() => removeProject(i)}>- Remove</button>
+        {#if item !== 0}
+            <button on:click|preventDefault={() => removeProject(item)}>- Remove</button>
         {/if}
     </div>
     {/each}
