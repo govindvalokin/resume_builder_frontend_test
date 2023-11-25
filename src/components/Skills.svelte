@@ -41,7 +41,7 @@
     {#each skills as skill, item}
     <div class="active" transition:slide>
         <InputBlock placeholder = "Add Skill Name" id = "skill-name" label = "Skill Name" bind:value={skill.skill_name} />
-        <SkillLevelSelectComponent label="Level" options={skill_options} bind:value={skill.level} default_value="Select Skill Level" />
+        <SkillLevelSelectComponent label="Level" options={skill_options} bind:value={skill.level} defaultValue="Select Skill Level" />
     </div>
     <!-- Buttons for adding or removing additional skill fields -->
     <div class="skill-buttons">

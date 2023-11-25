@@ -242,8 +242,8 @@
     <ProjectDetails bind:project />
     <!-- form submit and cancel buttons -->
     <div class="submission-buttons">
-      <a href="#/"><Button typeOfButton="cancel" button_label="Cancel" type="button"/></a>
-      <Button typeOfButton="save" button_label="Save" type="submit" />
+      <a href="#/"><Button typeOfButton="cancel" buttonLabel="Cancel" type="button"/></a>
+      <Button typeOfButton="save" buttonLabel="Save" type="submit" />
     </div>
   </form>
 </main>

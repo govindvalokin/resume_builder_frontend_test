@@ -223,7 +223,7 @@ function clearForm() {
     <SocialMedia bind:social_media />
 
     <div class="update-buttons">
-      <a href="#/"><Button typeOfButton="cancel" button_label="Cancel" type="button"/></a>
+      <a href="#/"><Button typeOfButton="cancel" buttonLabel="Cancel" type="button"/></a>
       <button type="button" id="update_button" on:click={handleUpdate}>Update</button>
     </div>
 </form>

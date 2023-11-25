@@ -74,7 +74,7 @@
                     label="Country"
                     options={country_options}
                     bind:value={country}
-                    default_value="Choose your Country"
+                    defaultValue="Choose your Country"
                 />
                 <!-- Error message display -->
                 <div class="errors">{country && validateCountry(country)}</div>

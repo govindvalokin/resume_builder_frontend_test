@@ -3,7 +3,7 @@
     export let label = "";
     export let options = [];
     export let value;
-    export let default_value='';
+    export let defaultValue='';
 </script>
 
 <main>
@@ -17,7 +17,7 @@
             <!-- Select input box -->
             <div class="input-entry">
                 <select bind:value>
-                    <option value="">{default_value}</option> 
+                    <option value="">{defaultValue}</option> 
                     {#each options as option}
                         <option value={option}>{option}</option>
                     {/each}

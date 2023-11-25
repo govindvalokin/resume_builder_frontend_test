@@ -1,5 +1,5 @@
 <script>
-    export let button_label = ''
+    export let buttonLabel = ''
     export let typeOfButton = ''
     export let type = ''
 
@@ -7,7 +7,7 @@
 <!-- Button -->
 <main>
 
-    <button class={typeOfButton} type={type}>{button_label}</button>
+    <button class={typeOfButton} type={type}>{buttonLabel}</button>
 
 </main>
 <style>

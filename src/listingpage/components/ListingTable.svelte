@@ -45,14 +45,14 @@
         "Qatar",
     ];
   export let selectValue="";
-  export let default_value='All';
+  export let defaultValue='All';
 
 
 
   //Sort
   export let sortOptions = [
-        "name",
-        "id"        
+        "Name",
+        "Id"        
     ];
   export let selectSortValue="";
   
@@ -68,10 +68,10 @@
 
       const dataArray = Object.values(parsedData);
 
-      if (selectSortValue === "name") {
+      if (selectSortValue === "Name") {
         data = dataArray.sort((a, b) => a.name.localeCompare(b.name));
         console.log(dataArray);
-      } else if (selectSortValue === "id") {
+      } else if (selectSortValue === "Id") {
         data = dataArray.sort((a, b) => a.id - b.id);
       } else {
         data = dataArray;
@@ -130,10 +130,10 @@
 
       const dataArray = Object.values(data);
 
-      if (selectSortValue === "name") {
+      if (selectSortValue === "Name") {
         filterData = dataArray.sort((a, b) => a.name.localeCompare(b.name));
         console.log(dataArray);
-      } else if (selectSortValue === "id") {
+      } else if (selectSortValue === "Id") {
         filterData = dataArray.sort((a, b) => a.id - b.id);
       } else {
         filterData = dataArray;
@@ -192,7 +192,7 @@
           <div class="input-entry">
             <select bind:value={selectValue} on:change={apiFilterResumeByCountry(selectValue)}>
                 <option value="" id="country_filter_first_option">Filter</option>
-                <option value="">{default_value}</option> 
+                <option value="">{defaultValue}</option> 
                 {#each options as option}
                     <option value={option}>{option}</option>
                 {/each}
