@@ -12,7 +12,7 @@
   import {
     validateEmail, validateName, validatePhone, validateUrl, validateSummary,
     validateAddress, validateStreet, validateCity, validatePincode, validateCountry,
-    validateQualification, validateCourseName, validateInstitute, validateLocation } from "../components/validation";
+    validateQualification, validateCourseName, validateInstitute, validateLocation, validateDate } from "../components/validation";
 
   let editId = "";
   console.log(editId);
@@ -121,7 +121,9 @@
       let courseNameCheck = validateCourseName(education[item].course_name);
       let instituteCheck = validateInstitute(education[item].institute_name);
       let locationCheck = validateLocation(education[item].location);
-      if (qualificationCheck != "" || courseNameCheck != "" || instituteCheck != "" || locationCheck != "")
+      let academicYearStartCheck = validateDate(education[item].academic_year_start);
+      let academicYearEndCheck = validateDate(education[item].academic_year_end);
+      if (qualificationCheck != "" || courseNameCheck != "" || instituteCheck != "" || locationCheck != "" || academicYearStartCheck != "" || academicYearEndCheck != "")
         {
             educationErrors.push({
             index: item,
@@ -129,6 +131,8 @@
             courseNameError: courseNameCheck,
             instituteError: instituteCheck,
             locationError: locationCheck,
+            academicStartError: academicYearStartCheck,
+            academicEndError: academicYearEndCheck
         });
       }
     }

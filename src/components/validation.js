@@ -185,3 +185,16 @@ export function validateLocation(location){
         return error;
     }
 }
+
+//Date validation
+export function validateDate(date){
+    let error = "";
+    if(date =="" || date == null){
+        error = "Date should not be empty";
+        return error;
+    }
+    else{
+        error = "";
+        return error;
+    }
+}

@@ -25,6 +25,7 @@
     validateCourseName,
     validateInstitute,
     validateLocation,
+    validateDate,
   } from "./validation";
   export let backward_link = "< Back to all Resume List";
 
@@ -119,25 +120,31 @@
     let pincodeCheck = validatePincode(pincode);
     let countryCheck = validateCountry(country);
     let educationErrors = [];
-    for (let i = 0; i < education.length; i++) {
+    for (let item = 0; item < education.length; item++) {
       let qualificationCheck = validateQualification(
-        education[i].qualification
+        education[item].qualification
       );
-      let courseNameCheck = validateCourseName(education[i].course_name);
-      let instituteCheck = validateInstitute(education[i].institute_name);
-      let locationCheck = validateLocation(education[i].location);
+      let courseNameCheck = validateCourseName(education[item].course_name);
+      let instituteCheck = validateInstitute(education[item].institute_name);
+      let locationCheck = validateLocation(education[item].location);
+      let academicYearStartCheck = validateDate(education[item].academic_year_start);
+      let academicYearEndCheck = validateDate(education[item].academic_year_end);
       if (
         qualificationCheck != "" ||
         courseNameCheck != "" ||
         instituteCheck != "" ||
-        locationCheck != ""
+        locationCheck != "" ||
+        academicYearStartCheck != "" ||
+        academicYearEndCheck != ""
       ) {
         educationErrors.push({
-          index: i,
+          index: item,
           qualificationError: qualificationCheck,
           courseNameError: courseNameCheck,
           instituteError: instituteCheck,
           locationError: locationCheck,
+          academicStartError: academicYearStartCheck,
+          academicEndError: academicYearEndCheck
         });
       }
     }
