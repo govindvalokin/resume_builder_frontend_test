@@ -27,7 +27,7 @@
 <div class="content-box">
     <div class="accordion-heading">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <h3 class="sub-title" on:click={handleClick}>Education</h3>
+        <h3 class="sub-title" on:click={handleClick}>Education <span class="mandatory-star">*</span></h3>
         <!-- Upword and downward arrows for accordian -->
         <div class="upword-arrow">
             {#if open}
@@ -114,5 +114,8 @@
         text-align: start;
         width: 100%;
         font-size: small;
+    }
+    .mandatory-star{
+        color: red;
     }
 </style>
