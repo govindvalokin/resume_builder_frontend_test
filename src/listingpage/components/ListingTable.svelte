@@ -191,7 +191,7 @@
           <!-- Select input box -->
           <div class="input-entry">
             <select bind:value={selectValue} on:change={apiFilterResumeByCountry(selectValue)}>
-                <option value="" id="country_filter_first_option">Filter</option>
+                <option value="" id="country-filter-first-option">Filter</option>
                 <option value="">{defaultValue}</option> 
                 {#each options as option}
                     <option value={option}>{option}</option>
@@ -228,7 +228,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
-      <th id="icon_heading" />
+      <th id="icon-heading" />
     </tr>
     <!-- for search api call -->
     
@@ -240,7 +240,7 @@
           <td>{value.name}</td>
           <td>{value.email}</td>
           <td>{value.phone}</td>
-          <td id="icon_column">
+          <td id="icon-column">
             
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="icon-container" on:click={toggleMenu(value.id)}>
@@ -270,7 +270,7 @@
       <td>{Value.name}</td>
       <td>{Value.email}</td>
       <td>{Value.phone}</td>
-      <td id="icon_column">
+      <td id="icon-column">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="icon-container" on:click={toggleMenu(Value.id)}>
           <Icon icon={dotsY} />
@@ -298,7 +298,7 @@
           <td>{Value.name}</td>
           <td>{Value.email}</td>
           <td>{Value.phone}</td>
-          <td id="icon_column">
+          <td id="icon-column">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="icon-container" on:click={toggleMenu(Value.id)}>
               <Icon icon={dotsY} />
@@ -366,12 +366,12 @@
       rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   }
-  #icon_column {
+  #icon-column {
     width: 138px;
     height: 37px;
     text-align: center;
   }
-  #icon_heading {
+  #icon-heading {
     width: 138px;
   }
   .dropdown-content a {
@@ -499,7 +499,7 @@
       display: none;
         
     }
-  #country_filter_first_option{
+  #country-filter-first-option{
     display: none;
   }
 </style>

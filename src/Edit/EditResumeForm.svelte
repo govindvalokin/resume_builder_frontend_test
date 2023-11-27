@@ -228,14 +228,14 @@ function clearForm() {
 
     <div class="update-buttons">
       <a href="#/"><Button typeOfButton="cancel" buttonLabel="Cancel" type="button"/></a>
-      <button type="button" id="update_button" on:click={handleUpdate}>Update</button>
+      <button type="button" id="update-button" on:click={handleUpdate}>Update</button>
     </div>
 </form>
  
 </main>
 
 <style>
-  #update_button {
+  #update-button {
     width: 100px;
     background-color: #209fa4;
     color: white;
@@ -307,7 +307,7 @@ function clearForm() {
       display: flex;
       flex-direction: column;
     }
-    #update_button{
+    #update-button{
         width: 97%;
         height: 40px;
         font-size: larger;
